@@ -1,0 +1,13 @@
+﻿<DIV id="drop">
+    <div style="width: auto; max-height:500px">
+        <img id="outputimage" style="max-width:100%;max-height:100%;"/>
+    </div>
+    <input type="file" accept="image/*" onchange="loadFile(event)">
+
+</DIV>
+<script>
+  var loadFile = function(event) {
+      var output = document.getElementById('outputimage');
+    output.src = URL.createObjectURL(event.target.files[0]);
+  };
+</script>

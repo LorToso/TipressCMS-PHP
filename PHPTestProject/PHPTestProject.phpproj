@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Name>PHPTestProject</Name>
+    <ProjectGuid>83b8cc65-743c-4fb9-8722-a7536e5208e0</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>PHPTestProject</RootNamespace>
+    <ProjectTypeGuids>{A0786B88-2ADB-4C21-ABE8-AA2D79766269}</ProjectTypeGuids>
+    <AssemblyName>PHPTestProject</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <IncludeDebugInformation>true</IncludeDebugInformation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <IncludeDebugInformation>false</IncludeDebugInformation>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="authenticate.php" />
+    <Compile Include="authentification.php" />
+    <Compile Include="author.php" />
+    <Compile Include="authorRepository.php" />
+    <Compile Include="echoService.php" />
+    <Compile Include="EntityRepository.php" />
+    <Compile Include="index.html" />
+    <Compile Include="index2.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="background.gif" />
+    <Content Include="Footer.html" />
+    <Content Include="Header.php" />
+    <Content Include="header.jpg" />
+    <Content Include="header2.jpg" />
+    <Content Include="imagebox.html" />
+    <Content Include="jquery-1.11.3.js" />
+    <Content Include="NavigationBar.html" />
+    <Content Include="Style.css" />
+    <Content Include="test2.php" />
+  </ItemGroup>
+</Project>
