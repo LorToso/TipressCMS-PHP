@@ -22,13 +22,52 @@ class authorRepository implements EntityRepository
     public function PrintForm($element)
     {
 ?>
-<script src="//cdn.ckeditor.com/4.5.5/standard/ckeditor.js"></script>
+<script src="./ckeditor/ckeditor.js"></script>
 <script>
-    var editorCfg =
+    var fullEditorCfg =
     {
         language: 'it',
-        height: 50
+        height: 50,
+        toolbarGroups: [
+            { name: 'document', groups: ['mode', 'document', 'doctools'] },
+            { name: 'clipboard', groups: ['clipboard', 'undo'] },
+            { name: 'editing', groups: ['find', 'selection', 'spellchecker', 'editing'] },
+            { name: 'forms', groups: ['forms'] },
+            { name: 'basicstyles', groups: ['basicstyles', 'cleanup'] },
+            { name: 'paragraph', groups: ['list', 'indent', 'blocks', 'align', 'bidi', 'paragraph'] },
+            { name: 'links', groups: ['links'] },
+            { name: 'insert', groups: ['insert'] },
+            { name: 'styles', groups: ['styles'] },
+            { name: 'colors', groups: ['colors'] },
+            { name: 'tools', groups: ['tools'] },
+            { name: 'others', groups: ['others'] },
+            { name: 'about', groups: ['about'] }
+        ],
+        removeButtons: 'Source,Save,NewPage,Preview,Print,Templates,PasteText,Find,SelectAll,Replace,Form,Checkbox,Radio,TextField,Textarea,Select,Button,ImageButton,HiddenField,Outdent,Indent,Format,Styles,ShowBlocks,About,BidiLtr,BidiRtl,Language,CreateDiv,Image,Flash,Smiley,SpecialChar,PageBreak,Iframe,Anchor,Unlink,Link',
     }
+
+    var emptyEditorCfg =
+    {
+        language: 'it',
+        height: 50,
+        toolbarGroups: [
+            { name: 'document', groups: ['mode', 'document', 'doctools'] },
+            { name: 'clipboard', groups: ['clipboard', 'undo'] },
+            { name: 'editing', groups: ['find', 'selection', 'spellchecker', 'editing'] },
+            { name: 'forms', groups: ['forms'] },
+            { name: 'basicstyles', groups: ['basicstyles', 'cleanup'] },
+            { name: 'paragraph', groups: ['list', 'indent', 'blocks', 'align', 'bidi', 'paragraph'] },
+            { name: 'links', groups: ['links'] },
+            { name: 'insert', groups: ['insert'] },
+            { name: 'styles', groups: ['styles'] },
+            { name: 'colors', groups: ['colors'] },
+            { name: 'tools', groups: ['tools'] },
+            { name: 'others', groups: ['others'] },
+            { name: 'about', groups: ['about'] }
+        ],
+        removeButtons: 'Source,Save,NewPage,Preview,Print,Templates,Find,Replace,Form,Checkbox,Radio,TextField,Textarea,Select,Button,ImageButton,HiddenField,Outdent,Indent,Format,Styles,ShowBlocks,About,BidiLtr,BidiRtl,Language,CreateDiv,Image,Flash,Smiley,SpecialChar,PageBreak,Iframe,Anchor,Unlink,Link,Cut,Copy,Paste,PasteText,Redo,Undo,Bold,Italic,Underline,Strike,Subscript,Superscript,RemoveFormat,NumberedList,BulletedList,Blockquote,JustifyLeft,JustifyCenter,TextColor,Maximize,Font,FontSize,PasteFromWord,JustifyRight,JustifyBlock,Table,HorizontalRule,BGColor,SelectAll',
+    };
+
 </script>
 
 
@@ -65,7 +104,25 @@ class authorRepository implements EntityRepository
             <textarea id="riconoscimenti" name="riconoscimenti">
                 <?php echo $element->riconoscimenti; ?>
             </textarea>
-            <script> CKEDITOR.replace('riconoscimenti', editorCfg); </script>
+            <script> CKEDITOR.replace('riconoscimenti', fullEditorCfg); </script>
+            <!--<script>
+                var editor = CKEDITOR.replace('riconoscimenti', emptyEditorCfg);
+
+                CKEDITOR.instances.riconoscimenti.on('blur', function () {
+                    alert('blur');
+                    //CKEDITOR.instances.riconoscimenti.destroy();
+                    //CKEDITOR.replace('riconoscimenti', emptyEditorCfg);
+                    //CKEDITOR.instances.riconoscimenti.config = emptyEditorCfg;
+                    CKEDITOR.replace('riconoscimenti', emptyEditorCfg);
+                });
+                CKEDITOR.instances.riconoscimenti.on('focus', function () {
+                    //alert('focus');
+                    //CKEDITOR.instances.riconoscimenti.destroy();
+                    //CKEDITOR.replace('riconoscimenti', fullEditorCfg);
+                    //CKEDITOR.instances.riconoscimenti.config = fullEditorCfg;
+                    CKEDITOR.replace('riconoscimenti', fullEditorCfg);
+                });
+            </script>-->
         </td>
     </tr>
     <tr>
@@ -76,7 +133,7 @@ class authorRepository implements EntityRepository
             <textarea id="biografia_breve" name="biografia_breve">
                 <?php echo $element->biografia_breve; ?>
             </textarea>
-            <script> CKEDITOR.replace('biografia_breve', editorCfg); </script>
+            <script> CKEDITOR.replace('biografia_breve', fullEditorCfg); </script>
         </td>
     </tr>
     <tr>
@@ -87,7 +144,7 @@ class authorRepository implements EntityRepository
             <textarea id="biografia" name="biografia">
                 <?php echo $element->biografia; ?>
             </textarea>
-            <script> CKEDITOR.replace('biografia', editorCfg); </script>
+            <script> CKEDITOR.replace('biografia', fullEditorCfg); </script>
         </td>
     </tr>
     <tr>
@@ -108,6 +165,10 @@ class authorRepository implements EntityRepository
     </tr>
 </table>
 <?php
+    }
+    public function getElementById($id)
+    {
+        return $this->getDefaultElement();
     }
 }
 

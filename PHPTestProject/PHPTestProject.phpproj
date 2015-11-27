@@ -20,6 +20,7 @@
     <Compile Include="authentification.php" />
     <Compile Include="author.php" />
     <Compile Include="authorRepository.php" />
+    <Compile Include="DBConnection.php" />
     <Compile Include="echoService.php" />
     <Compile Include="EntityRepository.php" />
     <Compile Include="index.html" />
@@ -36,5 +37,8 @@
     <Content Include="NavigationBar.html" />
     <Content Include="Style.css" />
     <Content Include="test2.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ckeditor\" />
   </ItemGroup>
 </Project>

@@ -9,7 +9,7 @@ $elementRepository = new authorRepository();
 $elements = $elementRepository->getElementList();
 
 $elementid = $_GET['element'];
-$element = $elements[$elementid];
+$element = $elementRepository->getElementById($elementid);
 
 if(is_null($element))
     $element = $elementRepository->getDefaultElement();
@@ -22,7 +22,7 @@ echo "</datalist>";
 ?>
 
 <form action=<?php echo $_SERVER["REQUEST_URI"]; ?> method="get">
-    Cerca autore:
+    Cerca:
     <script>
         function chooser(sel) {
             var value = sel.value;
