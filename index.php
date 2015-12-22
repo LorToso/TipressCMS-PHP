@@ -8,11 +8,17 @@ require('authorRepository.php');
 $elementRepository = new authorRepository();
 $elements = $elementRepository->getElementList();
 
-$elementid = $_GET['element'];
-$element = $elementRepository->getElementById($elementid);
-
-if(is_null($element))
+if(!empty($_GET['element']))
+{
+    $elementid = $_GET['element'];
+    $element = $elementRepository->getElementById($elementid);
+}
+else
+{
     $element = $elementRepository->getDefaultElement();
+}
+
+    
 
 echo "<datalist id=\"elements\">";
 foreach($elements as $a){

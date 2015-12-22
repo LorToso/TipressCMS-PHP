@@ -5,7 +5,7 @@ $authorList = array(
         1 => new author(1,'Lorenzo','Toso', 'riconoscimento','bio_breve','bio','im_small','im_big','sito'),
         2 => new author(2,'Roberto','Toso'),
         3 => new author(3,'Monika','Eingrieber'),
-        4 => new author(4,'Anna-Láura','Eingrieber-Toso'),
+        4 => new author(4,'Anna-LÃ¡ura','Eingrieber-Toso'),
     );
 class authorRepository implements EntityRepository
 {
@@ -160,7 +160,7 @@ class authorRepository implements EntityRepository
             Immagine:
         </td>
         <td width="100%">
-            <?php include("imagebox.html")?>
+            <?php include("imagebox.html") ?>
         </td>
     </tr>
 </table>
@@ -168,7 +168,8 @@ class authorRepository implements EntityRepository
     }
     public function getElementById($id)
     {
-        return $this->getDefaultElement();
+        global $authorList;
+        return $authorList[$id];
     }
 }
 
