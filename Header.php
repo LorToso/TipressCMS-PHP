@@ -9,10 +9,10 @@ if (session_status() == PHP_SESSION_NONE) {
 <head>
     <meta charset="utf-8" />
     <title> Funny title</title>
-    <link rel="stylesheet" type="text/css" href="Style.css">
-    <script src="jquery-1.11.3.js"></script>
+    <link rel="stylesheet" type="text/css" href="Style.css"/>
 </head>
 <body>
+    <script src="jquery-1.11.3.js"></script>
     <div class="contentbox">
         <img src="img/header.jpg" />
     </div>

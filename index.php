@@ -1,18 +1,18 @@
 <?php
 require('Header.php');
 require('authentification.php');
-require('authorRepository.php');
-require('AutocompleteBox.php');
+require('AuthorRepository.php');
+require('Searchbox.php');
 ?>
 
 <?php
-$elementRepository = new authorRepository();
+$elementRepository = new AuthorRepository();
 $elements = $elementRepository->getElementList();
 $element = findElement($elementRepository);
 
-AutocompleteBox::printBox($elements, $element);
+Searchbox::printSearchbox($elements, $element);
 //<button type="submit" name="action" value="new">Nuovo!</button>
-AuthorForm::printForm($element);
+$elementRepository->printForm($element);
 
 function findElement(EntityRepository $repository)
 {

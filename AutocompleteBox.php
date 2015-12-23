@@ -4,7 +4,7 @@ class AutocompleteBox {
 
     public static function printBox(array $elements, Entity $selectedElement) {
         AutocompleteBox::printDatalist($elements);
-        AutocompleteBox::printForm($selectedElement);
+        AutocompleteBox::printListEdit($selectedElement);
     }
     private static function printDatalist(array $elements)
     {        
@@ -14,13 +14,9 @@ class AutocompleteBox {
         }
         echo "</datalist>";
     }
-    private static function printForm(Entity $selectedElement)
+    private static function printListEdit(Entity $selectedElement)
     {
         ?>
-
-
-<form method="get" action="<?php echo $_SERVER["REQUEST_URI"]; ?>" >
-    Cerca:
     <script>
         function chooser(sel) {
             var value = sel.value;
@@ -33,13 +29,7 @@ class AutocompleteBox {
         }
     </script>
 
-
     <input id="element" list="elements" onchange="chooser(this)" value="<?php echo $selectedElement->GetDescriptor()?>" />
-    <input hidden="" id="chosenElement" name="element" value="<?php echo $selectedElement->id ?>" />
-    <button type="submit" name="action" value="find">Cerca!</button>
-</form>
-
         <?php
     }
 }
-?>
