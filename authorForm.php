@@ -7,7 +7,7 @@ function PrintAuthorForm(author $element)
     var fullEditorCfg =
     {
         language: 'it',
-        height: 50,
+        height: 100,
         toolbarGroups: [
             { name: 'document', groups: ['mode', 'document', 'doctools'] },
             { name: 'clipboard', groups: ['clipboard', 'undo'] },
@@ -24,30 +24,7 @@ function PrintAuthorForm(author $element)
             { name: 'about', groups: ['about'] }
         ],
         removeButtons: 'Source,Save,NewPage,Preview,Print,Templates,PasteText,Find,SelectAll,Replace,Form,Checkbox,Radio,TextField,Textarea,Select,Button,ImageButton,HiddenField,Outdent,Indent,Format,Styles,ShowBlocks,About,BidiLtr,BidiRtl,Language,CreateDiv,Image,Flash,Smiley,SpecialChar,PageBreak,Iframe,Anchor,Unlink,Link',
-    }
-
-    var emptyEditorCfg =
-    {
-        language: 'it',
-        height: 50,
-        toolbarGroups: [
-            { name: 'document', groups: ['mode', 'document', 'doctools'] },
-            { name: 'clipboard', groups: ['clipboard', 'undo'] },
-            { name: 'editing', groups: ['find', 'selection', 'spellchecker', 'editing'] },
-            { name: 'forms', groups: ['forms'] },
-            { name: 'basicstyles', groups: ['basicstyles', 'cleanup'] },
-            { name: 'paragraph', groups: ['list', 'indent', 'blocks', 'align', 'bidi', 'paragraph'] },
-            { name: 'links', groups: ['links'] },
-            { name: 'insert', groups: ['insert'] },
-            { name: 'styles', groups: ['styles'] },
-            { name: 'colors', groups: ['colors'] },
-            { name: 'tools', groups: ['tools'] },
-            { name: 'others', groups: ['others'] },
-            { name: 'about', groups: ['about'] }
-        ],
-        removeButtons: 'Source,Save,NewPage,Preview,Print,Templates,Find,Replace,Form,Checkbox,Radio,TextField,Textarea,Select,Button,ImageButton,HiddenField,Outdent,Indent,Format,Styles,ShowBlocks,About,BidiLtr,BidiRtl,Language,CreateDiv,Image,Flash,Smiley,SpecialChar,PageBreak,Iframe,Anchor,Unlink,Link,Cut,Copy,Paste,PasteText,Redo,Undo,Bold,Italic,Underline,Strike,Subscript,Superscript,RemoveFormat,NumberedList,BulletedList,Blockquote,JustifyLeft,JustifyCenter,TextColor,Maximize,Font,FontSize,PasteFromWord,JustifyRight,JustifyBlock,Table,HorizontalRule,BGColor,SelectAll',
     };
-
 </script>
 
 
@@ -78,6 +55,14 @@ function PrintAuthorForm(author $element)
     </tr>
     <tr>
         <td>
+            Sito:
+        </td>
+        <td width="100%">
+            <input type="text" id="sito" name="sito" value="<?php echo $element->sito; ?>" />
+        </td>
+    </tr>
+    <tr>
+        <td>
             Riconoscimenti:
         </td>
         <td width="100%">
@@ -85,24 +70,6 @@ function PrintAuthorForm(author $element)
                 <?php echo $element->riconoscimenti; ?>
             </textarea>
             <script> CKEDITOR.replace('riconoscimenti', fullEditorCfg); </script>
-            <!--<script>
-                var editor = CKEDITOR.replace('riconoscimenti', emptyEditorCfg);
-
-                CKEDITOR.instances.riconoscimenti.on('blur', function () {
-                    alert('blur');
-                    //CKEDITOR.instances.riconoscimenti.destroy();
-                    //CKEDITOR.replace('riconoscimenti', emptyEditorCfg);
-                    //CKEDITOR.instances.riconoscimenti.config = emptyEditorCfg;
-                    CKEDITOR.replace('riconoscimenti', emptyEditorCfg);
-                });
-                CKEDITOR.instances.riconoscimenti.on('focus', function () {
-                    //alert('focus');
-                    //CKEDITOR.instances.riconoscimenti.destroy();
-                    //CKEDITOR.replace('riconoscimenti', fullEditorCfg);
-                    //CKEDITOR.instances.riconoscimenti.config = fullEditorCfg;
-                    CKEDITOR.replace('riconoscimenti', fullEditorCfg);
-                });
-            </script>-->
         </td>
     </tr>
     <tr>
@@ -125,14 +92,6 @@ function PrintAuthorForm(author $element)
                 <?php echo $element->biografia; ?>
             </textarea>
             <script> CKEDITOR.replace('biografia', fullEditorCfg); </script>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            Sito:
-        </td>
-        <td width="100%">
-            <input type="text" id="sito" name="sito" value="<?php echo $element->sito; ?>" />
         </td>
     </tr>
     <tr>
