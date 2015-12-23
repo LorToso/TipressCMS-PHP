@@ -27,7 +27,7 @@ foreach($elements as $a){
 echo "</datalist>";
 ?>
 
-<form action=<?php echo $_SERVER["REQUEST_URI"]; ?> method="get">
+<form method="get" action=<?php echo $_SERVER["REQUEST_URI"]; ?> >
     Cerca:
     <script>
         function chooser(sel) {
