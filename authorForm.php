@@ -1,7 +1,11 @@
 <?php 
-function PrintAuthorForm(author $element)
+class AuthorForm 
 {
-?>
+    static function printForm(author $element)
+    {
+    ?>
+
+<form>
 <script src="./ckeditor/ckeditor.js"></script>
 <script>
     var fullEditorCfg =
@@ -26,8 +30,6 @@ function PrintAuthorForm(author $element)
         removeButtons: 'Source,Save,NewPage,Preview,Print,Templates,PasteText,Find,SelectAll,Replace,Form,Checkbox,Radio,TextField,Textarea,Select,Button,ImageButton,HiddenField,Outdent,Indent,Format,Styles,ShowBlocks,About,BidiLtr,BidiRtl,Language,CreateDiv,Image,Flash,Smiley,SpecialChar,PageBreak,Iframe,Anchor,Unlink,Link',
     };
 </script>
-
-
 <table>
     <tr>
         <td>
@@ -113,6 +115,10 @@ function PrintAuthorForm(author $element)
         </td>
     </tr>
 </table>
-<?php 
+</form>
+<input hidden="" id="chosenElement" name="element" value="<?php echo $element->id ?>" />
+<button type="submit" name="action" value="change">Crea/Modifica! </button>
+<button type="submit" name="action" value="delete">Elimina! </button>
+    <?php
+    }
 }
-?>

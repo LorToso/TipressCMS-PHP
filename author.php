@@ -1,7 +1,7 @@
 <?php
 require_once 'Entity.php';
 
-class author implements Entity
+class Author implements Entity
 {
     public $id;
     public $cognome;
@@ -26,7 +26,7 @@ class author implements Entity
     
     public static function fromDBResult(DBResult $dbResult)
     {
-        return new author($dbResult->values);
+        return new Author($dbResult->values);
     }
     public static function fromStrings($id, $cognome = null, $nome = null, $riconoscimenti = null, $biografia_breve = null, $biografia = null, $img_small = null,$img_big = null,$sito = null)
     {
@@ -41,7 +41,7 @@ class author implements Entity
         $array[7] = $img_big;
         $array[8] = $sito;
         
-        return new author($array);
+        return new Author($array);
     }
     private function __construct($array) {
         $this->id               = $array[0];
