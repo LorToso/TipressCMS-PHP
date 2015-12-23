@@ -1,14 +1,7 @@
 <?php
+require_once 'Entity.php';
 
-/**
- * author short summary.
- *
- * author description.
- *
- * @version 1.0
- * @author tk4990
- */
-class author
+class author implements Entity
 {
     public $id;
     public $cognome;
@@ -20,6 +13,17 @@ class author
     public $img_big;
     public $sito;
 
+    public $idChanged = false;
+    public $cognomeChanged = false;
+    public $nomeChanged = false;
+    public $riconoscimentiChanged = false;
+    public $biografia_breveChanged = false;
+    public $biografiaChanged = false;
+    public $img_smallChanged = false;
+    public $img_bigChanged = false;
+    public $sitoChanged = false;
+    
+    
     public static function fromDBResult(DBResult $dbResult)
     {
         return new author($dbResult->values);

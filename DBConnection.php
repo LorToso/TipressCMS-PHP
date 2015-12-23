@@ -29,6 +29,7 @@ class DBConnection
         {
             die('Connect Error (' . $this->mysqli->connect_errno . ') ' . $this->mysqli->connect_error);
         }
+        $this->setUtf8();
     }
     public function getById($table, $id)
     {
@@ -67,5 +68,12 @@ class DBConnection
         }
                 
         return $resultElements;
+    }
+    private function setUtf8()
+    {
+        if (!$this->mysqli->set_charset("utf8")) {
+            printf("Error loading character set utf8: %s\n", $mysqli->error);
+            exit();
+        }
     }
 }

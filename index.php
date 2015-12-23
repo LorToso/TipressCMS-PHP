@@ -7,27 +7,13 @@ require('authorRepository.php');
 <?php
 $elementRepository = new authorRepository();
 $elements = $elementRepository->getElementList();
+$element = findElement($elementRepository);
 
-if(!empty($_GET['element']))
-{
-    $elementid = $_GET['element'];
-    $element = $elementRepository->getElementById($elementid);
-}
-else
-{
-    $element = $elementRepository->getDefaultElement();
-}
+printDatalist($elements);
 
-    
-
-echo "<datalist id=\"elements\">";
-foreach($elements as $a){
-    echo "<option id=\"" . $a->id .  "\" value=\"" . $a->GetDescriptor(). "\"></option>";
-}
-echo "</datalist>";
 ?>
 
-<form method="get" action=<?php echo $_SERVER["REQUEST_URI"]; ?> >
+<form method="get" action="<?php echo $_SERVER["REQUEST_URI"]; ?>" >
     Cerca:
     <script>
         function chooser(sel) {
@@ -44,20 +30,40 @@ echo "</datalist>";
 
     <input id="element" list="elements" onchange="chooser(this)" value="<?php echo $element->GetDescriptor()?>" />
     <input hidden="" id="chosenElement" name="element" value="<?php echo $element->id ?>" />
-    <button type="submit">Cerca!</button>
-    <button type="submit">Nuovo!</button>
+    <button type="submit" name="action" value="find">Cerca!</button>
+    <button type="submit" name="action" value="new">Nuovo!</button>
 
 </form>
 <br />
 <form>
     <?php $elementRepository->PrintForm($element); ?>
-
-    <button type="submit">Crea/Modifica! </button>
-    <button type="submit">Elimina! </button>
+    <input hidden="" id="chosenElement" name="element" value="<?php echo $element->id ?>" />
+    <button type="submit" name="action" value="change">Crea/Modifica! </button>
+    <button type="submit" name="action" value="delete">Elimina! </button>
 </form>
 
 
 
 <?php
+
+function findElement(EntityRepository $repository)
+{
+    if(!empty($_GET['element']))
+    {
+        $elementid = $_GET['element'];
+        return $repository->getElementById($elementid);
+    }
+    else
+    {
+        return $repository->getDefaultElement();
+    }
+}
+function printDatalist(array $elements)
+{
+    echo "<datalist id=\"elements\">";
+    foreach($elements as $a){
+        echo "<option id=\"" . $a->id .  "\" value=\"" . $a->GetDescriptor(). "\"></option>";
+    }
+    echo "</datalist>";
+}
 include('Footer.html');
-?>

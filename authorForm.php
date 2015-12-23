@@ -34,7 +34,7 @@ function PrintAuthorForm(author $element)
             ID:
         </td>
         <td>
-            <input type="text" name="id" value="<?php echo $element->id; ?>" />
+            <input type="text" name="id" value="<?php echo $element->id; ?>" onchange="<?php $element->idChanged=true; ?>" />
         </td>
     </tr>
     <tr>
@@ -42,7 +42,7 @@ function PrintAuthorForm(author $element)
             Nome:
         </td>
         <td width="100%">
-            <input type="text" id="nome" name="nome" value="<?php echo $element->nome; ?>" />
+            <input type="text" id="nome" name="nome" value="<?php echo $element->nome; ?>"/>
         </td>
     </tr>
     <tr>
@@ -50,7 +50,7 @@ function PrintAuthorForm(author $element)
             Cognome:
         </td>
         <td width="100%">
-            <input type="text" id="cognome" name="cognome" value="<?php echo $element->cognome; ?>" />
+            <input type="text" id="cognome" name="cognome" value="<?php echo $element->cognome; ?>"/>
         </td>
     </tr>
     <tr>
@@ -58,7 +58,7 @@ function PrintAuthorForm(author $element)
             Sito:
         </td>
         <td width="100%">
-            <input type="text" id="sito" name="sito" value="<?php echo $element->sito; ?>" />
+            <input type="text" id="sito" name="sito" value="<?php echo $element->sito; ?>"/>
         </td>
     </tr>
     <tr>

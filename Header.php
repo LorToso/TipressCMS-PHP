@@ -14,11 +14,11 @@ if (session_status() == PHP_SESSION_NONE) {
 </head>
 <body>
     <div class="contentbox">
-        <img src="header.jpg" />
+        <img src="img/header.jpg" />
     </div>
     <?php include 'NavigationBar.html'; ?> 
 
     <div class="contentbox">
-        <img src="header2.jpg" />
+        <img src="img/header2.jpg" />
     </div>
     <div class="contentbox" id="contentbox">
