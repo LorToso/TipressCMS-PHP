@@ -1,17 +1,12 @@
 <?php
-require_once('author.php');
+require_once('Author.php');
 require_once('EntityRepository.php');
 require_once('DBConnection.php');
-include('authorForm.php');
+require('AuthorForm.php');
 
-class authorRepository implements EntityRepository
+class AuthorRepository implements EntityRepository
 {
     private $authorList = [];
-        //1 => author::fromStrings(1,'Toso','Lorenzo', 'riconoscimento','bio_breve','bio','im_small','im_big','sito'),
-        //2 => author::fromStrings(2,'Toso','Roberto'),
-        //3 => author::fromStrings(3,'Eingrieber','Monika'),
-        //4 => author::fromStrings(4,'Eingrieber-Toso','Anna-Láura'),
-        //1005 => author::fromStrings(1005,'Berst','Sasha'),
     
     public function getElementList()
     {
@@ -35,9 +30,9 @@ class authorRepository implements EntityRepository
         $list = $this->getElementList();
         return array_shift(array_values($list));
     }
-    public function PrintForm($element)
+    public function printForm($element)
     {
-        PrintAuthorForm($element);
+        AuthorForm::printForm($element);
     }
     public function getElementById($id)
     {
@@ -51,6 +46,3 @@ class authorRepository implements EntityRepository
         return author::fromDBResult($result[0]);
     }
 }
-
-
-?>

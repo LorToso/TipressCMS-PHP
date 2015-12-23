@@ -63,6 +63,7 @@ class AuthorForm
             <input type="text" id="sito" name="sito" value="<?php echo $element->sito; ?>"/>
         </td>
     </tr>
+    <tr><td><br></td></tr>
     <tr>
         <td>
             Riconoscimenti:
