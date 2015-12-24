@@ -5,7 +5,7 @@ class AuthorForm
     {
     ?>
 
-<form>
+<form method="post">
 <script src="./ckeditor/ckeditor.js"></script>
 <script>
     var fullEditorCfg =
@@ -104,22 +104,16 @@ class AuthorForm
         <td width="100%">
             <?php include("imagebox.html") ?>
             <?php 
-            if($element->img_big != null && $element->img_big != "")
-            {
-                ?>
-                <script> 
-                    setImage(<?php echo '\'..//img//autori//' . $element->img_big . '\''; ?>);
-                </script>
-                <?php
+            if($element->img_big != null && $element->img_big != ""){
+                echo "<script>setImage('..//img//autori//" . $element->img_big . "');</script>";
             }
             ?>
         </td>
     </tr>
 </table>
-</form>
 <input hidden="" id="chosenElement" name="element" value="<?php echo $element->id ?>" />
-<button type="submit" name="action" value="change">Crea/Modifica! </button>
-<button type="submit" name="action" value="delete">Elimina! </button>
+<button type="submit" name="action" value="change">Modifica! </button>
+</form>
     <?php
     }
 }
