@@ -9,29 +9,21 @@ $elements = $elementRepository->getElementList();
 $element = findSelectedElement($elementRepository);
 
 Searchbox::printSearchbox($elements, $element);
-$elementRepository->printBox($element);
 
-if(isAddition()){
-    echo "<br>--------POST: <br><br><br><br>";
+if(eventOccured()){
+    handleEvent($elementRepository);
+}
+else{
+    $elementRepository->printBox($element);
+    $elementRepository->printModificationForm($element);
+}
+
+
+    echo "<br>--------POST:<br>";
     print_r($_POST);
-    echo "<br>--------GET: <br><br><br><br>";
+    echo "<br>--------GET:<br>";
     print_r($_GET);
-}
-
-if(isModification() || isDeletion())
-{
-    //handleChanges($elementRepository);
-    echo "<br>--------POST: <br><br><br><br>";
-    print_r($_POST);
-    echo "<br>--------GET: <br><br><br><br>";
-    print_r($_GET);
-}
-else
-{
-$elementRepository->printForm($element);
-}
-
-
+    
 include('Footer.html');
 
 
@@ -43,33 +35,43 @@ function findSelectedElement(EntityRepository $repository){
     }
     return $repository->getElementById($elementid);
 }
-function isModification(){
+function hasBeenModified(){
     return filter_input(INPUT_POST,'action',FILTER_SANITIZE_STRING) == 'change';
 }
-function isAddition(){
-    return filter_input(INPUT_GET,'action',FILTER_SANITIZE_STRING) == 'new';
+function isAboutToCreateNewElement(){
+    return filter_input(INPUT_GET,'action',FILTER_SANITIZE_STRING) == 'createnew';
 }
-function isDeletion(){
+function hasBeenAdded(){
+    return filter_input(INPUT_POST,'action',FILTER_SANITIZE_STRING) == 'iscreated';
+}
+function hasBeenDeleted(){
     return filter_input(INPUT_POST,'action',FILTER_SANITIZE_STRING) == 'delete';
 }
 function getElementId(){
     return filter_input(INPUT_GET, 'element',FILTER_SANITIZE_NUMBER_INT);
 }
-function handleChanges(EntityRepository $repository)
-{
-    if(isDeletion())
-    {
-        $id = getElementId();
-        return $repository->deleteById($id);
+function eventOccured(){
+    return isAboutToCreateNewElement() || hasBeenAdded() || hasBeenModified() || hasBeenDeleted();
+}
+function handleEvent(EntityRepository $elementRepository){
+    if(isAboutToCreateNewElement()){
+        $elementRepository->printAdditionForm();    
+        Searchbox::clear();
+        echo "ADDITION<br>";
     }
-    if (isAddition()) {
-        $newelement = $repository->newFromPostParameters($_POST);
-        return $repository->insert($newelement);
+    else if (hasBeenAdded()){
+        $newElement = $elementRepository->newFromPostParameters($_POST);
+        $elementRepository->insert($newElement);
     }
-    if(isModification()){
-        $modifiedElement = $repository->newFromPostParameters($_POST);
-        $originalElement = $repository->getElementById($modifiedElement->values['id']);
-        $differences = $originalElement->compare($modifiedElement);
-        return $repository->modify($originalElement->values['id'], $differences);
+    else if(hasBeenModified()){
+        $newElement  = $elementRepository->newFromPostParameters($_POST);
+        $origElement = $elementRepository->getElementById($newElement->values['id']);
+        $elementRepository->modify($origElement, $newElement);
+        echo "MODIFICATION<br>";
     }
+    else if(hasBeenDeleted()){
+        $toDeleteId = filter_input(INPUT_POST, 'id',FILTER_SANITIZE_NUMBER_INT);
+        $elementRepository->delete($toDeleteId);
+        echo "DELETION<br>";
+    }   
 }

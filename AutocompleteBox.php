@@ -24,12 +24,25 @@ class AutocompleteBox {
             var listEntry = $(list).find('option[value="' + value + '"]');
             var id = listEntry.attr('id');
 
-            var field = document.getElementById('chosenElement');
+            var field = $('#chosenElement');
             field.value = id;
+        }
+        function clearAutocompleteBox(){
+            var autocompletebox = $('#element');
+            autocompletebox.val('');
         }
     </script>
 
     <input id="element" list="elements" onchange="chooser(this)" value="<?php echo $selectedElement->GetDescriptor()?>" />
+        <?php
+    }
+    
+    public static function clear()
+    {
+        ?>
+        <script> 
+            clearAutocompleteBox(); 
+        </script>
         <?php
     }
 }

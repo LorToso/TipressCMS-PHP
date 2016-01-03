@@ -13,8 +13,8 @@ class Searchbox
         <?php AutocompleteBox::printBox($elements, $selectedElement);?>
         
         <input type="hidden" id="chosenElement" name="element" value="<?php echo $selectedElement->values['id']; ?>" />
-        <button type="submit" name="action" value="find">Cerca!</button>
-        oppure: <button type="submit" name="action" value="new">Nuovo!</button>
+        <button type="submit" value="find">Cerca!</button>
+        oppure: <button type="submit" name="action" value="createnew">Nuovo!</button>
     </div>
     
 <br>
@@ -26,6 +26,10 @@ class Searchbox
     private static function getCurrentURL()
     {
         return filter_input(INPUT_SERVER, 'REQUEST_URI');
+    }
+    public static function clear()
+    {
+        AutocompleteBox::clear();
     }
 }
 

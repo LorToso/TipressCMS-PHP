@@ -24,9 +24,13 @@ class AuthorRepository implements EntityRepository
         $firstElement = array_shift(array_values($list));
         return $this->getElementById($firstElement->values['id']);
     }
-    public function printForm($element)
+    public function printModificationForm(Entity $element)
     {
-        AuthorForm::printForm($element);
+        AuthorForm::printModificationForm($element);
+    }
+    public function printAdditionForm()
+    {
+        AuthorForm::printAdditionForm();
     }
     public function getElementById($id)
     {
@@ -55,7 +59,7 @@ class AuthorRepository implements EntityRepository
     }
     
     public function newFromPostParameters($post) {
-        return Author::fromStrings(0);
+        return Author::fromStrings($post['id'], $post['cognome'], $post['nome'], $post['riconoscimenti'], $post['biografia_breve'], $post['biografia'], $post['img_small'], $post['img_big'], $post['sito']);
     }
     public function insert($element){
         

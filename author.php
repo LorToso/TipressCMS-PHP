@@ -24,6 +24,10 @@ class Author implements Entity
         
         return new Author($array);
     }
+    public static function newEmpty(){
+        return Author::fromStrings('');
+    }
+
     private function __construct($array) {
         $this->values['id']             = $array[0];
         $this->values['nome']           = $array[1];

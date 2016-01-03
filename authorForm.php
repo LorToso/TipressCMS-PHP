@@ -1,11 +1,34 @@
 <?php 
 class AuthorForm 
 {
-    static function printForm(author $element)
-    {
-    ?>
+    public static function printModificationForm(author $element){
+        echo '<form method="post">';
+        
+        AuthorForm::printForm($element);
+        
+        echo '<div id="formbuttonbox">';
+        echo '<button type="submit" name="action" value="change" id="changebutton">Modifica!</button>';
+        echo '<button type="submit" name="action" value="delete" id="deletebutton">Elimina!</button>';
+        echo '</div>';
+        
+        echo '</form>';
+    }
+    
+    
+    public static function printAdditionForm(){
+        echo '<form method="post" action="' . getUrlWithoutGetParams() . '">';
+        
+        AuthorForm::printForm(Author::newEmpty());
+        
+        echo '<div id="formbuttonbox">';
+        echo '<button type="submit" name="action" value="iscreated" id="createbutton">Crea!</button>';
+        echo '</div>';
+        
+        echo '</form>';        
+    }
+    private static function printForm(Author $element){
+        ?>
 
-<form method="post">
 <script src="./ckeditor/ckeditor.js"></script>
 <script>
     var fullEditorCfg =
@@ -33,34 +56,55 @@ class AuthorForm
 <table>
     <tr>
         <td>
-            ID:
+            <table>
+                <tr>
+                    <?php
+                    if($element->values['id'] != ''){
+                    ?>
+                    <td>
+                        ID:
+                    </td>
+                    <td>
+                        <input type="text" id="idbox" name="id" readonly="readonly" value="<?php echo $element->values['id']; ?>" />
+                    </td>
+                    <?php
+                    }
+                    ?>
+                </tr>
+                <tr>
+                    <td>
+                        Nome:
+                    </td>
+                    <td width="100%">
+                        <input type="text" id="nome" name="nome" value="<?php echo $element->values['nome']; ?>"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Cognome:
+                    </td>
+                    <td width="100%">
+                        <input type="text" id="cognome" name="cognome" value="<?php echo $element->values['cognome']; ?>"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Sito:
+                    </td>
+                    <td width="100%">
+                        <input type="text" id="sito" name="sito" value="<?php echo $element->values['sito']; ?>"/>
+                    </td>
+                </tr>
+            </table>
         </td>
         <td>
-            <input type="text" id="idbox" name="id" disabled value="<?php echo $element->values['id']; ?>" />
-        </td>
-    </tr>
-    <tr>
-        <td>
-            Nome:
-        </td>
-        <td width="100%">
-            <input type="text" id="nome" name="nome" value="<?php echo $element->values['nome']; ?>"/>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            Cognome:
-        </td>
-        <td width="100%">
-            <input type="text" id="cognome" name="cognome" value="<?php echo $element->values['cognome']; ?>"/>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            Sito:
-        </td>
-        <td width="100%">
-            <input type="text" id="sito" name="sito" value="<?php echo $element->values['sito']; ?>"/>
+            
+            <?php include("imagebox.html") ?>
+            <?php 
+            if($element->values['img_big'] != null && $element->values['img_big'] != ""){
+                echo "<script>setImage('..//img//autori//" . $element->values['img_big'] . "');</script>";
+            }
+            ?>
         </td>
     </tr>
     <tr><td><br></td></tr>
@@ -97,28 +141,14 @@ class AuthorForm
             <script> CKEDITOR.replace('biografia', fullEditorCfg); </script>
         </td>
     </tr>
-    <tr>
-        <td>
-            Immagine:
-        </td>
-        <td width="100%">
-            <?php include("imagebox.html") ?>
-            <?php 
-            if($element->values['img_big'] != null && $element->values['img_big'] != ""){
-                echo "<script>setImage('..//img//autori//" . $element->values['img_big'] . "');</script>";
-            }
-            ?>
-        </td>
-    </tr>
 </table>
-<input hidden="" id="chosenElement" name="element" value="<?php echo $element->values['id'] ?>" />
-
-<div id="formbuttonbox">
-    <button type="submit" name="action" value="change" id="changebutton">Modifica!</button>
-    <button type="submit" name="action" value="delete" id="deletebutton">Elimina!</button>
-</div>
-
-</form>
-    <?php
+<?php
     }
+}
+function getCurrentURL()
+{
+    return filter_input(INPUT_SERVER, 'REQUEST_URI');
+}
+function getUrlWithoutGetParams(){
+    return substr(getCurrentURL(),0,strpos(getCurrentURL(),'?'));
 }

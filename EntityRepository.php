@@ -1,4 +1,6 @@
 <?php
+require_once 'Entity.php';
+
 interface EntityRepository
 {
     public function getElementList();
@@ -7,5 +9,6 @@ interface EntityRepository
     public function newFromPostParameters($post);
     
     
-    public function printForm($element);
+    public function printModificationForm(Entity $element);
+    public function printAdditionForm();
 }
