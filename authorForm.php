@@ -36,7 +36,7 @@ class AuthorForm
             ID:
         </td>
         <td>
-            <input type="text" name="id" value="<?php echo $element->id; ?>" onchange="<?php $element->idChanged=true; ?>" />
+            <input type="text" id="idbox" name="id" disabled value="<?php echo $element->values['id']; ?>" />
         </td>
     </tr>
     <tr>
@@ -44,7 +44,7 @@ class AuthorForm
             Nome:
         </td>
         <td width="100%">
-            <input type="text" id="nome" name="nome" value="<?php echo $element->nome; ?>"/>
+            <input type="text" id="nome" name="nome" value="<?php echo $element->values['nome']; ?>"/>
         </td>
     </tr>
     <tr>
@@ -52,7 +52,7 @@ class AuthorForm
             Cognome:
         </td>
         <td width="100%">
-            <input type="text" id="cognome" name="cognome" value="<?php echo $element->cognome; ?>"/>
+            <input type="text" id="cognome" name="cognome" value="<?php echo $element->values['cognome']; ?>"/>
         </td>
     </tr>
     <tr>
@@ -60,7 +60,7 @@ class AuthorForm
             Sito:
         </td>
         <td width="100%">
-            <input type="text" id="sito" name="sito" value="<?php echo $element->sito; ?>"/>
+            <input type="text" id="sito" name="sito" value="<?php echo $element->values['sito']; ?>"/>
         </td>
     </tr>
     <tr><td><br></td></tr>
@@ -70,7 +70,7 @@ class AuthorForm
         </td>
         <td width="100%">
             <textarea id="riconoscimenti" name="riconoscimenti">
-                <?php echo $element->riconoscimenti; ?>
+                <?php echo $element->values['riconoscimenti']; ?>
             </textarea>
             <script> CKEDITOR.replace('riconoscimenti', fullEditorCfg); </script>
         </td>
@@ -81,7 +81,7 @@ class AuthorForm
         </td>
         <td width="100%">
             <textarea id="biografia_breve" name="biografia_breve">
-                <?php echo $element->biografia_breve; ?>
+                <?php echo $element->values['biografia_breve']; ?>
             </textarea>
             <script> CKEDITOR.replace('biografia_breve', fullEditorCfg); </script>
         </td>
@@ -92,7 +92,7 @@ class AuthorForm
         </td>
         <td width="100%">
             <textarea id="biografia" name="biografia">
-                <?php echo $element->biografia; ?>
+                <?php echo $element->values['biografia']; ?>
             </textarea>
             <script> CKEDITOR.replace('biografia', fullEditorCfg); </script>
         </td>
@@ -104,15 +104,20 @@ class AuthorForm
         <td width="100%">
             <?php include("imagebox.html") ?>
             <?php 
-            if($element->img_big != null && $element->img_big != ""){
-                echo "<script>setImage('..//img//autori//" . $element->img_big . "');</script>";
+            if($element->values['img_big'] != null && $element->values['img_big'] != ""){
+                echo "<script>setImage('..//img//autori//" . $element->values['img_big'] . "');</script>";
             }
             ?>
         </td>
     </tr>
 </table>
-<input hidden="" id="chosenElement" name="element" value="<?php echo $element->id ?>" />
-<button type="submit" name="action" value="change">Modifica! </button>
+<input hidden="" id="chosenElement" name="element" value="<?php echo $element->values['id'] ?>" />
+
+<div id="formbuttonbox">
+    <button type="submit" name="action" value="change" id="changebutton">Modifica!</button>
+    <button type="submit" name="action" value="delete" id="deletebutton">Elimina!</button>
+</div>
+
 </form>
     <?php
     }

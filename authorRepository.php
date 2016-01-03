@@ -5,30 +5,24 @@ require_once('DBConnection.php');
 require('AuthorForm.php');
 
 class AuthorRepository implements EntityRepository
-{
-    private $authorList = [];
-    
+{   
     public function getElementList()
     {
-        global $authorList;
-        if (count($authorList) != 0) {
-            return $authorList;
-        }
-
         $instance = DBConnection::getInstance();
-        $result = $instance->getByColumns('autori',['id','cognome','nome']);
+        $result = $instance->getByColumns('autori',['id','cognome','nome'],'cognome');
         
         foreach($result as $element)
         {
             $author = author::fromStrings($element->values[0],$element->values[1],$element->values[2]);
-            $authorList[$author->id] = $author;
+            $authorList[$author->values['id']] = $author;
         }
         return $authorList;
     }
     public function getDefaultElement()
     {
         $list = $this->getElementList();
-        return array_shift(array_values($list));
+        $firstElement = array_shift(array_values($list));
+        return $this->getElementById($firstElement->values['id']);
     }
     public function printForm($element)
     {
@@ -45,4 +39,26 @@ class AuthorRepository implements EntityRepository
         
         return author::fromDBResult($result[0]);
     }
+    public function printBox(Entity $element){
+        if($element != NULL){
+            $descriptor = $element->getDescriptor();
+        }
+        else{
+            $descriptor = "Nessuno.";
+        }
+        
+        ?>
+        <div id="chosenElementBox">
+           Autore scelto: <?php echo $descriptor; ?>.
+        </div>
+        <?php
+    }
+    
+    public function newFromPostParameters($post) {
+        return Author::fromStrings(0);
+    }
+    public function insert($element){
+        
+    }
+
 }

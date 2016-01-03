@@ -3,8 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/PhpTipressTest/DBConnection.php</file>
-            <file>file:/C:/xampp/htdocs/PhpTipressTest/authorRepository.php</file>
+            <file>file:/C:/xampp/htdocs/PhpTipressTest/index.php</file>
+            <file>file:/C:/xampp/htdocs/PhpTipressTest/AutocompleteBox.php</file>
+            <file>file:/C:/xampp/htdocs/PhpTipressTest/EntityRepository.php</file>
+            <file>file:/C:/xampp/htdocs/PhpTipressTest/Entity.php</file>
+            <file>file:/C:/xampp/htdocs/PhpTipressTest/AuthorRepository.php</file>
+            <file>file:/C:/xampp/htdocs/PhpTipressTest/Searchbox.php</file>
         </group>
     </open-files>
 </project-private>

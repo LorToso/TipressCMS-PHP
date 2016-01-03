@@ -12,7 +12,9 @@
 }
 #contentbox{
     box-sizing: border-box;
-    padding: 20px 20px 20px 20px;
+    padding: 50px 20px 20px 20px;
+    border-radius: 30px;
+    margin-top: -30px;
 }
 #menubox{
     background-image: url('img/header3.jpg');    
@@ -111,4 +113,32 @@
 }
 #imagebox{
     text-align: center;
+}
+#deletebutton{
+    width: 100px;
+    height: 50px;
+    background-color: red;
+    margin-left: 20px;
+}
+#changebutton{
+    width: 100px;
+    height: 50px;
+    background-color: green;
+    margin-right: 20px;
+}
+#formbuttonbox{
+    text-align: center;
+    margin-top: 50px;
+    background-color: lightgray;
+    border-radius: 15px;
+}
+#chosenElementBox{
+    text-align: center;
+    
+    margin-bottom: 40px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: lightgray;
+    border-radius: 15px;
+    font-weight: bold;
 }

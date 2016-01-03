@@ -3,26 +3,7 @@ require_once 'Entity.php';
 
 class Author implements Entity
 {
-    public $id;
-    public $cognome;
-    public $nome;
-    public $riconoscimenti;
-    public $biografia_breve;
-    public $biografia;
-    public $img_small;
-    public $img_big;
-    public $sito;
-
-    public $idChanged = false;
-    public $cognomeChanged = false;
-    public $nomeChanged = false;
-    public $riconoscimentiChanged = false;
-    public $biografia_breveChanged = false;
-    public $biografiaChanged = false;
-    public $img_smallChanged = false;
-    public $img_bigChanged = false;
-    public $sitoChanged = false;
-    
+    public $values = [];
     
     public static function fromDBResult(DBResult $dbResult)
     {
@@ -44,20 +25,24 @@ class Author implements Entity
         return new Author($array);
     }
     private function __construct($array) {
-        $this->id               = $array[0];
-        $this->nome             = $array[1];
-        $this->cognome          = $array[2];
-        $this->riconoscimenti   = $array[3];
-        $this->biografia_breve  = $array[4];
-        $this->biografia        = $array[5];
-        $this->img_small        = $array[6];
-        $this->img_big          = $array[7];
-        $this->sito             = $array[8];
+        $this->values['id']             = $array[0];
+        $this->values['nome']           = $array[1];
+        $this->values['cognome']        = $array[2];
+        $this->values['riconoscimenti'] = $array[3];
+        $this->values['biografia_breve']= $array[4];
+        $this->values['biografia']      = $array[5];
+        $this->values['img_small']      = $array[6];
+        $this->values['img_big']        = $array[7];
+        $this->values['sito']           = $array[8];
     }
 
     public function GetDescriptor()
     {
-        return $this->nome . ' ' . $this->cognome;
+        return $this->values['nome'] . ' ' . $this->values['cognome'];
+    }
+
+    public function compare($other) {
+        
     }
 
 }

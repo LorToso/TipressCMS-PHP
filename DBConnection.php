@@ -42,7 +42,7 @@ class DBConnection
         
         return $this->generateResultArray($result);
     }
-    public function getByColumns($table, $columnArray)
+    public function getByColumns($table, $columnArray, $sortby = NULL)
     {
         $queryString = 'SELECT ';
         foreach ($columnArray as $column) {
@@ -50,6 +50,11 @@ class DBConnection
         }
         $queryString = substr($queryString, 0, strlen($queryString)-2);
         $queryString = $queryString . ' FROM ' . $table;
+        
+        if($sortby != NULL){
+            $queryString = $queryString . ' ORDER BY ' . $sortby;
+        }
+        
         
         $stmt = $this->mysqli->prepare($queryString);
         

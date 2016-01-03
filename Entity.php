@@ -1,4 +1,5 @@
 <?php
 interface Entity {    
-    public function GetDescriptor();
+    public function getDescriptor();
+    public function compare($other);
 }

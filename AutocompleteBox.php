@@ -10,7 +10,7 @@ class AutocompleteBox {
     {        
         echo "<datalist id=\"elements\">";
         foreach($elements as $a){
-            echo "<option id=\"" . $a->id .  "\" value=\"" . $a->GetDescriptor(). "\"></option>";
+            echo "<option id=\"" . $a->values['id'] .  "\" value=\"" . $a->getDescriptor(). "\"></option>";
         }
         echo "</datalist>";
     }

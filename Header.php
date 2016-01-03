@@ -8,7 +8,7 @@ if (session_status() == PHP_SESSION_NONE) {
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
-    <title> Funny title</title>
+    <title>Tipress-Uploader</title>
     <link rel="stylesheet" type="text/css" href="Style.css"/>
 </head>
 <body>

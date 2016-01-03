@@ -10,11 +10,11 @@ class Searchbox
 <form method="get" action="<?php echo self::getCurrentURL() ?>" >
     <div id="autocompletebox">
         Cerca:
-        <input hidden="" id="chosenElement" name="element" value="<?php echo $selectedElement->id ?>" />
-        <?php AutocompleteBox::printBox($elements, $selectedElement); ?>
+        <?php AutocompleteBox::printBox($elements, $selectedElement);?>
+        
+        <input type="hidden" id="chosenElement" name="element" value="<?php echo $selectedElement->values['id']; ?>" />
         <button type="submit" name="action" value="find">Cerca!</button>
-        <button type="submit" name="action" value="new">Nuovo!</button>
-        <button type="submit" name="action" value="delete">Elimina!</button>
+        oppure: <button type="submit" name="action" value="new">Nuovo!</button>
     </div>
     
 <br>
