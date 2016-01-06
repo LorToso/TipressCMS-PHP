@@ -48,7 +48,7 @@ function hasBeenDeleted(){
     return filter_input(INPUT_POST,'action',FILTER_SANITIZE_STRING) == 'delete';
 }
 function getElementId(){
-    return filter_input(INPUT_GET, 'element',FILTER_SANITIZE_NUMBER_INT);
+    return filter_input(INPUT_GET, 'id',FILTER_SANITIZE_NUMBER_INT);
 }
 function eventOccured(){
     return isAboutToCreateNewElement() || hasBeenAdded() || hasBeenModified() || hasBeenDeleted();

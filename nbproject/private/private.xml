@@ -5,8 +5,7 @@
         <group>
             <file>file:/C:/xampp/htdocs/PhpTipressTest/index.php</file>
             <file>file:/C:/xampp/htdocs/PhpTipressTest/AutocompleteBox.php</file>
-            <file>file:/C:/xampp/htdocs/PhpTipressTest/EntityRepository.php</file>
-            <file>file:/C:/xampp/htdocs/PhpTipressTest/Entity.php</file>
+            <file>file:/C:/xampp/htdocs/PhpTipressTest/AuthorForm.php</file>
             <file>file:/C:/xampp/htdocs/PhpTipressTest/AuthorRepository.php</file>
             <file>file:/C:/xampp/htdocs/PhpTipressTest/Searchbox.php</file>
         </group>

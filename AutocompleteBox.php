@@ -8,9 +8,9 @@ class AutocompleteBox {
     }
     private static function printDatalist(array $elements)
     {        
-        echo "<datalist id=\"elements\">";
+        echo '<datalist id="elementDataList">';
         foreach($elements as $a){
-            echo "<option id=\"" . $a->values['id'] .  "\" value=\"" . $a->getDescriptor(). "\"></option>";
+            echo '<option id="' . $a->values['id'] .  " value=" . $a->getDescriptor(). '"></option>';
         }
         echo "</datalist>";
     }
@@ -18,22 +18,28 @@ class AutocompleteBox {
     {
         ?>
     <script>
-        function chooser(sel) {
-            var value = sel.value;
-            var list = $('#elements');
-            var listEntry = $(list).find('option[value="' + value + '"]');
-            var id = listEntry.attr('id');
+        function chooser() {
+            var a = $("#autocompleteboxEdit");
+            
+            var autocompletebox = $('#autocompleteboxEdit');
+            var datalist = $('#elementDataList');
+            
+            var selectedValue = autocompletebox.val();
+            
+            var selectedListEntry = datalist.find('option[value="' + selectedValue + '"]');
+            var id = selectedListEntry.attr('id');
 
             var field = $('#chosenElement');
-            field.value = id;
+            field.val(id);
         }
         function clearAutocompleteBox(){
-            var autocompletebox = $('#element');
+            var autocompletebox = $('#autocompleteboxEdit');
             autocompletebox.val('');
         }
     </script>
 
-    <input id="element" list="elements" onchange="chooser(this)" value="<?php echo $selectedElement->GetDescriptor()?>" />
+    <input id="autocompleteboxEdit" list="elementDataList" onchange="chooser()" value="<?php echo $selectedElement->GetDescriptor(); ?>" />
+    <input type="hidden" id="chosenElement" name="id" value="<?php echo $selectedElement->values['id']; ?>" />
         <?php
     }
     

@@ -7,29 +7,22 @@ class Searchbox
     {
 ?>
 
-<form method="get" action="<?php echo self::getCurrentURL() ?>" >
+<form method="get" action="<?php echo filter_input(INPUT_SERVER, 'REQUEST_URI'); ?>" >
     <div id="autocompletebox">
         Cerca:
         <?php AutocompleteBox::printBox($elements, $selectedElement);?>
         
-        <input type="hidden" id="chosenElement" name="element" value="<?php echo $selectedElement->values['id']; ?>" />
-        <button type="submit" value="find">Cerca!</button>
+        <button type="submit" name="action" value="find">Cerca!</button>
         oppure: <button type="submit" name="action" value="createnew">Nuovo!</button>
     </div>
-    
+</form>    
 <br>
 <br>
-</form>
                 
 <?php
-    }
-    private static function getCurrentURL()
-    {
-        return filter_input(INPUT_SERVER, 'REQUEST_URI');
     }
     public static function clear()
     {
         AutocompleteBox::clear();
     }
 }
-
