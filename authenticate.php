@@ -62,14 +62,12 @@ else {
             </td>
         </tr>
     </table>
-    <label>
-        <?php 
-        if(IsLoginDefined())
-        {
-        echo "<input hidden type=\"text\" name=\"redirect\" value=\"" . $_POST['redirect'] . "/>";
-        }
-        ?>
-    </label>
+    <?php
+    if(IsLoginDefined())
+    {
+    echo "<input hidden type=\"text\" name=\"redirect\" value=\"" . $_SESSION['redirect'] . "/>";
+    }
+    ?>
 </form>
 
 <?php

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="25944050-ce10-495c-b32e-4f6fe0429970" name="Xampp Apache" url="http://localhost/PHPTipressTest">
+        <fileTransfer port="0" mountedRoot="C:\xampp\htdocs\PhpTipressTest" accessType="MOUNT" />
+      </webServer>
+    </option>
+  </component>
+</project>
