@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<database name="default" defaultIdMethod="native" defaultPhpNamingMethod="underscore">
+  <table name="autori" idMethod="native" phpName="Autori">
+    <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="cognome" phpName="Cognome" type="VARCHAR" size="100"/>
+    <column name="nome" phpName="Nome" type="VARCHAR" size="100"/>
+    <column name="riconoscimenti" phpName="Riconoscimenti" type="CLOB"/>
+    <column name="biografia_breve" phpName="BiografiaBreve" type="CLOB"/>
+    <column name="biografia" phpName="Biografia" type="CLOB"/>
+    <column name="img_small" phpName="ImgSmall" type="VARCHAR" size="100"/>
+    <column name="img_big" phpName="ImgBig" type="VARCHAR" size="100"/>
+    <column name="sito" phpName="Sito" type="VARCHAR" size="100"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="clienti" idMethod="native" phpName="Clienti">
+    <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="cognome" phpName="Cognome" type="VARCHAR" size="100"/>
+    <column name="nome" phpName="Nome" type="VARCHAR" size="100"/>
+    <column name="descrizione" phpName="Descrizione" type="CLOB"/>
+    <column name="img_small" phpName="ImgSmall" type="VARCHAR" size="100"/>
+    <column name="img_big" phpName="ImgBig" type="VARCHAR" size="100"/>
+    <column name="sito" phpName="Sito" type="VARCHAR" size="100"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="coagenti" idMethod="native" phpName="Coagenti">
+    <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="cognome" phpName="Cognome" type="VARCHAR" size="100"/>
+    <column name="nome" phpName="Nome" type="VARCHAR" size="100"/>
+    <column name="area" phpName="Area" type="VARCHAR" size="100"/>
+    <column name="indirizzo" phpName="Indirizzo" type="VARCHAR" size="100"/>
+    <column name="email" phpName="Email" type="VARCHAR" size="100"/>
+    <column name="sito" phpName="Sito" type="VARCHAR" size="100"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="elenco_lingue" idMethod="native" phpName="ElencoLingue">
+    <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="lingua" phpName="Lingua" type="VARCHAR" size="50" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="elenco_stati" idMethod="native" phpName="ElencoStati">
+    <column name="stato" phpName="Stato" type="VARCHAR" size="60" primaryKey="true" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="elenco_tipoutenti" idMethod="native" phpName="ElencoTipoutenti">
+    <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="tipo" phpName="Tipo" type="VARCHAR" size="50" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="genere1" idMethod="native" phpName="Genere1">
+    <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="nome" phpName="Nome" type="VARCHAR" size="255"/>
+    <column name="ordine" phpName="Ordine" type="INTEGER"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="genere2" idMethod="native" phpName="Genere2">
+    <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="ID1" phpName="Id1" type="INTEGER"/>
+    <column name="nome" phpName="Nome" type="VARCHAR" size="255"/>
+    <column name="nome_uniq" phpName="NomeUniq" type="VARCHAR" size="255"/>
+    <column name="ordine" phpName="Ordine" type="INTEGER"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="libri" idMethod="native" phpName="Libri">
+    <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="titolo" phpName="Titolo" type="VARCHAR" size="255"/>
+    <column name="autore1" phpName="Autore1" type="INTEGER"/>
+    <column name="autore2" phpName="Autore2" type="INTEGER"/>
+    <column name="autore3" phpName="Autore3" type="INTEGER"/>
+    <column name="tipo1" phpName="Tipo1" type="INTEGER" defaultValue="0"/>
+    <column name="IDgenere1" phpName="Idgenere1" type="INTEGER" defaultValue="0"/>
+    <column name="tipo2" phpName="Tipo2" type="INTEGER" defaultValue="0"/>
+    <column name="IDgenere2" phpName="Idgenere2" type="INTEGER" defaultValue="0"/>
+    <column name="tipo3" phpName="Tipo3" type="INTEGER" defaultValue="0"/>
+    <column name="IDgenere3" phpName="Idgenere3" type="INTEGER" defaultValue="0"/>
+    <column name="editore" phpName="Editore" type="VARCHAR" size="255"/>
+    <column name="dati_tecnici" phpName="DatiTecnici" type="CLOB"/>
+    <column name="diritti_controllati" phpName="DirittiControllati" type="CLOB"/>
+    <column name="diritti_concessi" phpName="DirittiConcessi" type="CLOB"/>
+    <column name="descrizione_breve" phpName="DescrizioneBreve" type="LONGVARCHAR"/>
+    <column name="descrizione" phpName="Descrizione" type="CLOB"/>
+    <column name="pdf1_ita" phpName="Pdf1Ita" type="VARCHAR" size="100"/>
+    <column name="pdf1_eng" phpName="Pdf1Eng" type="VARCHAR" size="100"/>
+    <column name="pdf1_deu" phpName="Pdf1Deu" type="VARCHAR" size="100"/>
+    <column name="pdf1_fra" phpName="Pdf1Fra" type="VARCHAR" size="100"/>
+    <column name="pdf1_esp" phpName="Pdf1Esp" type="VARCHAR" size="100"/>
+    <column name="pdf2" phpName="Pdf2" type="VARCHAR" size="100"/>
+    <column name="pdf3" phpName="Pdf3" type="VARCHAR" size="100"/>
+    <column name="pdf4" phpName="Pdf4" type="VARCHAR" size="100"/>
+    <column name="img_small" phpName="ImgSmall" type="VARCHAR" size="100"/>
+    <column name="img_big" phpName="ImgBig" type="VARCHAR" size="100"/>
+    <column name="vetrina" phpName="Vetrina" type="VARCHAR" size="2"/>
+    <column name="ordine" phpName="Ordine" type="INTEGER"/>
+    <column name="vetrinacat" phpName="Vetrinacat" type="VARCHAR" size="2"/>
+    <column name="ordinecat" phpName="Ordinecat" type="INTEGER"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="navigazione" idMethod="native" phpName="Navigazione">
+    <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="ordine" phpName="Ordine" type="SMALLINT" size="3"/>
+    <column name="nome" phpName="Nome" type="VARCHAR" size="255"/>
+    <column name="testo" phpName="Testo" type="CLOB"/>
+    <column name="link" phpName="Link" type="VARCHAR" size="50"/>
+    <column name="data" phpName="Data" type="TIMESTAMP" defaultValue="0000-00-00 00:00:00"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="news" idMethod="native" phpName="News">
+    <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="titolo" phpName="Titolo" type="VARCHAR" size="200" required="true"/>
+    <column name="testo_breve" phpName="TestoBreve" type="CLOB" required="true"/>
+    <column name="testo" phpName="Testo" type="CLOB" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="newsletter" idMethod="native" phpName="Newsletter">
+    <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="titolo" phpName="Titolo" type="VARCHAR" size="255"/>
+    <column name="testo" phpName="Testo" type="LONGVARCHAR"/>
+    <column name="lingua" phpName="Lingua" type="SMALLINT" size="3"/>
+    <column name="tipologia" phpName="Tipologia" type="SMALLINT" size="3"/>
+    <column name="datains" phpName="Datains" type="TIMESTAMP" defaultValue="0000-00-00 00:00:00"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="newsletter_utenti" idMethod="native" phpName="NewsletterUtenti">
+    <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="nome" phpName="Nome" type="VARCHAR" size="50"/>
+    <column name="cognome" phpName="Cognome" type="VARCHAR" size="50"/>
+    <column name="citta" phpName="Citta" type="VARCHAR" size="100"/>
+    <column name="stato" phpName="Stato" type="VARCHAR" size="50"/>
+    <column name="email" phpName="Email" type="VARCHAR" size="100"/>
+    <column name="lingua" phpName="Lingua" type="SMALLINT" size="3"/>
+    <column name="tipologia" phpName="Tipologia" type="SMALLINT" size="3"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="utenti" idMethod="native" phpName="Utenti">
+    <column name="ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="nome" phpName="Nome" type="VARCHAR" size="100" required="true" defaultValue=""/>
+    <column name="user" phpName="User" type="VARCHAR" size="12" required="true" defaultValue=""/>
+    <column name="passw" phpName="Passw" type="VARCHAR" size="12" required="true" defaultValue=""/>
+    <column name="email" phpName="Email" type="VARCHAR" size="100"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+</database>

@@ -1,0 +1,8 @@
+{
+  "require": {
+    "propel/propel": "2.0.0-alpha7"
+  },
+  "autoload": {
+    "classmap": ["/"]
+  }
+}

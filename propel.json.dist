@@ -1,0 +1,8 @@
+{
+    "propel": {
+        "paths": {
+            "schemaDir": "C:\\Users\\Lorenzo Toso\\PhpstormProjects\\TipressCMS-PHP",
+            "phpDir": "C:\\Users\\Lorenzo Toso\\PhpstormProjects\\TipressCMS-PHP"
+        }
+    }
+}
