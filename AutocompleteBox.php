@@ -2,7 +2,7 @@
 
 class AutocompleteBox {
 
-    public static function printBox(array $elements, Entity $selectedElement) {
+    public static function printBox(array $elements, $selectedElement) {
         AutocompleteBox::printDatalist($elements);
         AutocompleteBox::printListEdit($selectedElement);
     }
@@ -10,11 +10,11 @@ class AutocompleteBox {
     {        
         echo '<datalist id="elementDataList">';
         foreach($elements as $a){
-            echo '<option id="' . $a->values['id'] .  " value=" . $a->getDescriptor(). '"></option>';
+            echo '<option id="' . $a->getId() .  '" value="' . $a->getDescriptor(). '"></option>';
         }
         echo "</datalist>";
     }
-    private static function printListEdit(Entity $selectedElement)
+    private static function printListEdit($selectedElement)
     {
         ?>
     <script>
@@ -38,8 +38,8 @@ class AutocompleteBox {
         }
     </script>
 
-    <input id="autocompleteboxEdit" list="elementDataList" onchange="chooser()" value="<?php echo $selectedElement->GetDescriptor(); ?>" />
-    <input type="hidden" id="chosenElement" name="id" value="<?php echo $selectedElement->values['id']; ?>" />
+    <input id="autocompleteboxEdit" list="elementDataList" onchange="chooser()" value="<?php echo $selectedElement->getDescriptor(); ?>" />
+    <input type="hidden" id="chosenElement" name="id" value="<?php echo $selectedElement->getId(); ?>" />
         <?php
     }
     

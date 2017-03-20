@@ -3,7 +3,7 @@ require 'AutocompleteBox.php';
 
 class Searchbox
 {
-    public static function printSearchbox(array $elements, Entity $selectedElement) 
+    public static function printSearchbox(array $elements, $selectedElement)
     {
 ?>
 

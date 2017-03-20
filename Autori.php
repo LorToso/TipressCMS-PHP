@@ -14,5 +14,8 @@ use Base\Autori as BaseAutori;
  */
 class Autori extends BaseAutori
 {
-
+    public function getDescriptor()
+    {
+        return $this->getNome() . " " . $this->getCognome();
+    }
 }

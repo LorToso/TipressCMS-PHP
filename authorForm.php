@@ -1,7 +1,7 @@
 <?php 
 class AuthorForm 
 {
-    public static function printModificationForm(author $element){
+    public static function printModificationForm(Autori $element){
         echo '<form method="post">';
         
         AuthorForm::printForm($element);
@@ -26,7 +26,7 @@ class AuthorForm
         
         echo '</form>';        
     }
-    private static function printForm(Author $element){
+    private static function printForm(Autori $element){
         ?>
 
 <script src="./ckeditor/ckeditor.js"></script>
@@ -59,13 +59,13 @@ class AuthorForm
             <table>
                 <tr>
                     <?php
-                    if($element->values['id'] != ''){
+                    if($element->getId() != ''){
                     ?>
                     <td>
                         ID:
                     </td>
                     <td>
-                        <input type="text" id="idbox" name="id" readonly="readonly" value="<?php echo $element->values['id']; ?>" />
+                        <input type="text" id="idbox" name="id" readonly="readonly" value="<?php echo $element->getId(); ?>" />
                     </td>
                     <?php
                     }
@@ -76,7 +76,7 @@ class AuthorForm
                         Nome:
                     </td>
                     <td width="100%">
-                        <input type="text" id="nome" name="nome" value="<?php echo $element->values['nome']; ?>"/>
+                        <input type="text" id="nome" name="nome" value="<?php echo $element->getNome(); ?>"/>
                     </td>
                 </tr>
                 <tr>
@@ -84,7 +84,7 @@ class AuthorForm
                         Cognome:
                     </td>
                     <td width="100%">
-                        <input type="text" id="cognome" name="cognome" value="<?php echo $element->values['cognome']; ?>"/>
+                        <input type="text" id="cognome" name="cognome" value="<?php echo $element->getCognome(); ?>"/>
                     </td>
                 </tr>
                 <tr>
@@ -92,7 +92,7 @@ class AuthorForm
                         Sito:
                     </td>
                     <td width="100%">
-                        <input type="text" id="sito" name="sito" value="<?php echo $element->values['sito']; ?>"/>
+                        <input type="text" id="sito" name="sito" value="<?php echo $element->getSito(); ?>"/>
                     </td>
                 </tr>
             </table>
@@ -101,8 +101,8 @@ class AuthorForm
             
             <?php include("imagebox.html") ?>
             <?php 
-            if($element->values['img_big'] != null && $element->values['img_big'] != ""){
-                echo "<script>setImage('..//img//autori//" . $element->values['img_big'] . "');</script>";
+            if($element->getImgBig() != null && $element->getImgBig() != ""){
+                echo "<script>setImage('..//img//autori//" . $element->getImgBig() . "');</script>";
             }
             ?>
         </td>
@@ -114,7 +114,7 @@ class AuthorForm
         </td>
         <td width="100%">
             <textarea id="riconoscimenti" name="riconoscimenti">
-                <?php echo $element->values['riconoscimenti']; ?>
+                <?php echo $element->getRiconoscimenti(); ?>
             </textarea>
             <script> CKEDITOR.replace('riconoscimenti', fullEditorCfg); </script>
         </td>
@@ -125,7 +125,7 @@ class AuthorForm
         </td>
         <td width="100%">
             <textarea id="biografia_breve" name="biografia_breve">
-                <?php echo $element->values['biografia_breve']; ?>
+                <?php echo $element->getBiografiaBreve(); ?>
             </textarea>
             <script> CKEDITOR.replace('biografia_breve', fullEditorCfg); </script>
         </td>
@@ -136,7 +136,7 @@ class AuthorForm
         </td>
         <td width="100%">
             <textarea id="biografia" name="biografia">
-                <?php echo $element->values['biografia']; ?>
+                <?php echo $element->getBiografia(); ?>
             </textarea>
             <script> CKEDITOR.replace('biografia', fullEditorCfg); </script>
         </td>
