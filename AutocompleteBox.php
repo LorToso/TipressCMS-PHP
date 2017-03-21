@@ -38,8 +38,8 @@ class AutocompleteBox {
         }
     </script>
 
-    <input id="autocompleteboxEdit" list="elementDataList" onchange="chooser()" value="<?php echo $selectedElement->getDescriptor(); ?>" />
-    <input type="hidden" id="chosenElement" name="id" value="<?php echo $selectedElement->getId(); ?>" />
+    <input id="autocompleteboxEdit" list="elementDataList" onchange="chooser()" value="<?php echo $selectedElement!=null ? $selectedElement->getDescriptor() : ""; ?>" />
+    <input type="hidden" id="chosenElement" name="id" value="<?php echo $selectedElement!=null ? $selectedElement->getId() : ""; ?>" />
         <?php
     }
     
