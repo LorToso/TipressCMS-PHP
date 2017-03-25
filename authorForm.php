@@ -5,12 +5,19 @@ class AuthorForm
         echo '<form method="post">';
         
         AuthorForm::printForm($element);
-        
+
         echo '<div id="formbuttonbox">';
-        echo '<button type="submit" name="action" value="change" id="changebutton">Modifica!</button>';
-        echo '<button type="submit" name="action" value="delete" id="deletebutton">Elimina!</button>';
+
+        if($element->isNew())
+        {
+            echo '<button type="submit" name="action" value="insert" id="createbutton">Crea!</button>';
+        }
+        else
+        {
+            echo '<button type="submit" name="action" value="update" id="changebutton">Modifica!</button>';
+            echo '<button type="submit" name="action" value="delete" id="deletebutton">Elimina!</button>';
+        }
         echo '</div>';
-        
         echo '</form>';
     }
     

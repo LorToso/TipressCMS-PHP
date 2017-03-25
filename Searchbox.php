@@ -13,7 +13,7 @@ class Searchbox
         <?php AutocompleteBox::printBox($elements, $selectedElement);?>
         
         <button type="submit" name="action" value="find">Cerca!</button>
-        oppure: <button type="submit" name="action" value="createnew">Nuovo!</button>
+        oppure: <button type="submit" name="action" value="create">Nuovo!</button>
     </div>
 </form>    
 <br>
