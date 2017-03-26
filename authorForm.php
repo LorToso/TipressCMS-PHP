@@ -72,7 +72,7 @@ class AuthorForm
                         ID:
                     </td>
                     <td>
-                        <input type="text" id="idbox" name="id" readonly="readonly" value="<?php echo $element->getId(); ?>" />
+                        <input type="text"name="id" readonly="readonly" value="<?php echo $element->getId(); ?>" />
                     </td>
                     <?php
                     }
@@ -83,7 +83,7 @@ class AuthorForm
                         Nome:
                     </td>
                     <td width="100%">
-                        <input type="text" id="nome" name="nome" value="<?php echo $element->getNome(); ?>"/>
+                        <input type="text" name="nome" value="<?php echo $element->getNome(); ?>"/>
                     </td>
                 </tr>
                 <tr>
@@ -99,7 +99,7 @@ class AuthorForm
                         Sito:
                     </td>
                     <td width="100%">
-                        <input type="text" id="sito" name="sito" value="<?php echo $element->getSito(); ?>"/>
+                        <input type="text" name="sito" value="<?php echo $element->getSito(); ?>"/>
                     </td>
                 </tr>
             </table>

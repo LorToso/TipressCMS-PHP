@@ -8,50 +8,8 @@ include('Autori.php');
 include('Map/AutoriTableMap.php');
 include('Searchbox.php');
 include('authorForm.php');
+include('basic_functions.php');
 
-function isGet()
-{
-    return !empty($_GET);
-}
-function isPost()
-{
-    return !empty($_POST);
-}
-function getID()
-{
-    if(isPost())
-    {
-        if(!empty($_POST["id"]))
-        {
-            return $_POST["id"];
-        }
-    }
-    else if(isGet())
-    {
-        if(!empty($_GET["id"]))
-        {
-            return $_GET["id"];
-        }
-    }
-    return 0;
-}
-function getAction()
-{
-    if(isPost())
-    {
-        if(!empty($_POST["action"]))
-        {
-            return $_POST["action"];
-        }
-    }
-    else if(isGet())
-    {
-        if(!empty($_GET["action"])) {
-            return $_GET["action"];
-        }
-    }
-    return null;
-}
 function setFromPost(Autori $element)
 {
     $element->setNome($_POST["nome"]);
@@ -64,66 +22,24 @@ function setFromPost(Autori $element)
 
 }
 
+//echo "<script>$('#nav_autori').css('color','white','background-color','black');</script>";
+
 $q = new AutoriQuery();
-$elements = $q->find()->getData();
-$element = null;
 
-$id = getID();
-$action = getAction();
-
-if($id != "")
-{
-    $possibleElement = $q->findById($id);
-    if($possibleElement->count() > 0)
-    {
-        $element = $possibleElement[0];
-    }
-    else
-    {
-        echo "No element with ID " . $id . " was found.";
-    }
-}
-else if($action != null){
-    echo "No matching element was found.";
-}
+include('find_element.php');
 
 Searchbox::printSearchbox($elements, $element);
 
-
-if($action == "delete")
-{
-    echo "Element: " . $element->getDescriptor() . " has been deleted.";
-    $element->delete();
-    $element = null;
-}
-else if($action == "create")
-{
-    $element = new Autori();
-}
-else if($action == "insert") {
-    $element = new Autori();
-    setFromPost($element);
-    $element->save();
-    echo "Element " . $element->getDescriptor() . " was successfully created.";
-}
-else if($action == "update")
-{
-    setFromPost($element);
-    $element->save();
-    echo "Element " . $element->getDescriptor() . " was successfully modified.";
-}
+include('action_handling.php');
 
 if($element != null)
 {
     AuthorForm::printModificationForm($element);
 }
 
-
-
-
-echo "<br>--------POST:<br>";
-print_r($_POST);
-echo "<br>--------GET:<br>";
-print_r($_GET);
+//echo "<br>--------POST:<br>";
+//print_r($_POST);
+//echo "<br>--------GET:<br>";
+//print_r($_GET);
 
 include('Footer.html');
