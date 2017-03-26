@@ -3,7 +3,7 @@ class AuthorForm
 {
     public static function printModificationForm(Autori $element){
         echo '<form method="post">';
-        
+
         AuthorForm::printForm($element);
 
         echo '<div id="formbuttonbox">';
@@ -109,7 +109,7 @@ class AuthorForm
             <?php include("imagebox.html") ?>
             <?php 
             if($element->getImgBig() != null && $element->getImgBig() != ""){
-                echo "<script>setImage('..//img//autori//" . $element->getImgBig() . "');</script>";
+                echo "<script>setImage('..//tipress//img//autori//" . $element->getImgBig() . "');</script>";
             }
             ?>
         </td>

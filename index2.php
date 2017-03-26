@@ -39,11 +39,16 @@ function getAction()
 {
     if(isPost())
     {
-        return $_POST["action"];
+        if(!empty($_POST["action"]))
+        {
+            return $_POST["action"];
+        }
     }
     else if(isGet())
     {
-        return $_GET["action"];
+        if(!empty($_GET["action"])) {
+            return $_GET["action"];
+        }
     }
     return null;
 }
@@ -55,8 +60,7 @@ function setFromPost(Autori $element)
     $element->setRiconoscimenti($_POST["riconoscimenti"]);
     $element->setBiografiaBreve($_POST["biografia_breve"]);
     $element->setBiografia($_POST["biografia"]);
-    // TODO img_big
-    // TODO img_small
+    $element->setImgBig($_POST["img_big"]);
 
 }
 
