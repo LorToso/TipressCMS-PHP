@@ -31,12 +31,12 @@ class LibriForm
                 <?php
                 if($element->getId() != '') {
                     printSimpleRow("ID:","id",$element->getId());
-                    echo "<script>$('input[name=id]').prop('disabled', true); </script>";
+                    disableID();
                 }
                 printSimpleRow("Titolo","titolo",$element->getTitolo());
-                printSimpleRow("Autore1","autore1",$element->getAutore1());
-                printSimpleRow("Autore2","autore2",$element->getAutore2());
-                printSimpleRow("Autore3","autore3",$element->getAutore3());
+                printFKBox("Autore1","autore1",$element->getAutore1(),"autori","nome + ' ' + cognome","cognome");
+                printFKBox("Autore2","autore2",$element->getAutore2(),"autori","nome + ' ' + cognome","cognome");
+                printFKBox("Autore3","autore3",$element->getAutore3(),"autori","nome + ' ' + cognome","cognome");
                 printSimpleRow("Tipo 1:","tipo1",$element->getTipo1());
                 printSimpleRow("IDgenere 1:","IDgenere1",$element->getIdgenere1());
                 printSimpleRow("Tipo 2:","tipo2",$element->getTipo2());
@@ -61,6 +61,18 @@ class LibriForm
     printHTMLRow("Diritti concessi:","diritti_concessi", $element->getDirittiConcessi());
     printHTMLRow("Descrizione breve:","descrizione_breve", $element->getDescrizioneBreve());
     printHTMLRow("Descrizione:","descrizione", $element->getDescrizione());
+    printFileBox("PDF italiano:", "pdf1_ita",$element->getPdf1Ita(), '../tipress/pdf/');
+    printFileBox("PDF inglese:", "pdf1_eng",$element->getPdf1Eng(), '../tipress/pdf/');
+    printFileBox("PDF tedesco:", "pdf1_deu",$element->getPdf1Deu(), '../tipress/pdf/');
+    printFileBox("PDF francese:", "pdf1_fra",$element->getPdf1Fra(), '../tipress/pdf/');
+    printFileBox("PDF spagnolo:", "pdf1_esp",$element->getPdf1Esp(), '../tipress/pdf/');
+    printFileBox("Altro PDF 1:", "pdf2",$element->getPdf2(), '../tipress/pdf/');
+    printFileBox("Altro PDF 2:", "pdf3",$element->getPdf3(), '../tipress/pdf/');
+    printFileBox("Altro PDF 3:", "pdf4",$element->getPdf4(), '../tipress/pdf/');
+    printCheckbox("Vetrina?", "vetrina", $element->getVetrina());
+    printOrderbox("Ordine:", "ordine", $element->getOrdine());
+    printCheckbox("Vetrina di categoria?", "vetrinacat", $element->getVetrinacat());
+    printOrderbox("Ordine in categoria:", "ordinecat", $element->getOrdinecat());
     ?>
 </table>
 <?php

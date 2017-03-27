@@ -14,6 +14,21 @@ use Base\Autori as BaseAutori;
  */
 class Autori extends BaseAutori
 {
+    public static function getPathFor($filetype)
+    {
+        if($filetype == 'image')
+        {
+            return '../tipress/img/autori/';
+        }
+        else if($filetype == 'document')
+        {
+            return '../tipress/pdf/';
+        }
+        else
+        {
+            die("error: invalid filetype");
+        }
+    }
     public function getDescriptor()
     {
         return $this->getNome() . " " . $this->getCognome();

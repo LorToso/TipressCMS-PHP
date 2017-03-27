@@ -1,4 +1,5 @@
 <?php
+include('File_box.php');
 /**
  * Created by PhpStorm.
  * User: Lorenzo Toso
@@ -36,6 +37,33 @@ function printImageBox($image, $path)
     if($image != null && $image != ""){
         echo "<script>setImage('" . $path . "', '" . $image . "');</script>";
     }
+}
+function printFileBox($text, $column_name, $value, $entity_type)
+{
+    echo "<tr>";
+    echo "<td>";
+    echo $text;
+    echo "</td>";
+    echo '<td width="100%">';
+    Filebox::from($column_name,$entity_type,'document');
+    echo "</td>";
+    echo "</tr>";
+}
+function printCheckbox($text, $column_name, $value)
+{
+    printSimpleRow($text,$column_name,$value);
+}
+function printOrderbox($text, $column_name, $value)
+{
+    printSimpleRow($text,$column_name,$value);
+}
+function printFKBox($text, $column_name, $value, $foreignTable, $foreignValue, $orderby)
+{
+    printSimpleRow($text,$column_name,$value);
+}
+function disableID()
+{
+    echo "<script>$('input[name=id]').prop('readonly', true); </script>";
 }
 ?>
 <script src="./ckeditor/ckeditor.js"></script>

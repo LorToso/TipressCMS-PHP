@@ -14,6 +14,21 @@ use Base\Libri as BaseLibri;
  */
 class Libri extends BaseLibri
 {
+    public static function getPathFor($filetype)
+    {
+        if($filetype == 'image')
+        {
+            return '../tipress/img/libri/';
+        }
+        else if($filetype == 'document')
+        {
+            return '../tipress/pdf/';
+        }
+        else
+        {
+            die("error: invalid filetype");
+        }
+    }
     public function getDescriptor()
     {
         return $this->getTitolo();
@@ -45,7 +60,6 @@ class Libri extends BaseLibri
         $element->setPdf2($_POST["pdf2"]);
         $element->setPdf3($_POST["pdf3"]);
         $element->setPdf4($_POST["pdf4"]);
-        $element->setImgSmall($_POST["img_small"]);
         $element->setImgBig($_POST["img_big"]);
         $element->setVetrina($_POST["vetrina"]);
         $element->setOrdine($_POST["ordine"]);

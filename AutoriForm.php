@@ -32,7 +32,7 @@ class AutoriForm
                 <?php
                 if($element->getId() != '') {
                     printSimpleRow("ID:","id",$element->getId());
-                    echo "<script>$('input[name=id]').prop('disabled', true); </script>";
+                    disableID();
                 }
                 printSimpleRow("Nome:","nome",$element->getNome());
                 printSimpleRow("Cognome:","cognome",$element->getCognome());
