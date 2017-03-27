@@ -14,17 +14,17 @@ if($action == "delete")
 }
 else if($action == "create")
 {
-    $element = new Autori();
+    $element = new $class;
 }
 else if($action == "insert") {
-    $element = new Autori();
-    setFromPost($element);
+    $element = new $class;
+    $class::fromPost($element);
     $element->save();
     echo "Element " . $element->getDescriptor() . " was successfully created.";
 }
 else if($action == "update")
 {
-    setFromPost($element);
+    $class::fromPost($element);
     $element->save();
     echo "Element " . $element->getDescriptor() . " was successfully modified.";
 }

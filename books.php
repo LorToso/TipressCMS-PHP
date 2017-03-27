@@ -4,11 +4,8 @@ include('propel.php');
 include('Searchbox.php');
 include('basic_functions.php');
 
-$class = 'Autori';
+$class = 'Libri';
 
 //echo "<script>$('#nav_autori').css('color','white','background-color','black');</script>";
-
-print_r($_POST);
-
 include('cms.php');
 include('Footer.html');

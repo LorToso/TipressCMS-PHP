@@ -4,9 +4,9 @@
     </div>
     <!--<input type="file" accept="image/*" onchange="loadFile(event)">-->
 
-
-    <input type="file" name="img_big" id="picture" onchange="loadFile(event)">
-    <input type="button" id="upload" value="Upload">
+<!--onchange="loadFile(event)"-->
+    <input type="file" name="img_big" id="picture"  value="<?php echo $element->getImgBig()?>"/>
+    <input type="button" id="upload" value="Upload"/>
     <img id="check_mark" style="max-width:25px;max-height:25px;visibility: hidden" src="img/check_mark.png"/>
 </DIV>
 
@@ -38,5 +38,6 @@
     var setImage = function(imagename) {
         var output = document.getElementById('outputimage');
         output.src = imagename;
+        $('#check_mark').css("visibility","hidden");
     };
 </script>

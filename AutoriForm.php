@@ -1,10 +1,10 @@
 <?php 
-class AuthorForm 
+class AutoriForm
 {
     public static function printModificationForm(Autori $element){
         echo '<form method="post">';
 
-        AuthorForm::printForm($element);
+        AutoriForm::printForm($element);
 
         echo '<div id="formbuttonbox">';
 
@@ -20,19 +20,7 @@ class AuthorForm
         echo '</div>';
         echo '</form>';
     }
-    
-    
-    public static function printAdditionForm(){
-        echo '<form method="post" action="' . getUrlWithoutGetParams() . '">';
-        
-        AuthorForm::printForm(Author::newEmpty());
-        
-        echo '<div id="formbuttonbox">';
-        echo '<button type="submit" name="action" value="iscreated" id="createbutton">Crea!</button>';
-        echo '</div>';
-        
-        echo '</form>';        
-    }
+
     private static function printForm(Autori $element){
         ?>
 
@@ -106,7 +94,7 @@ class AuthorForm
         </td>
         <td>
             
-            <?php include("imagebox.html") ?>
+            <?php include("imagebox.php") ?>
             <?php 
             if($element->getImgBig() != null && $element->getImgBig() != ""){
                 echo "<script>setImage('..//tipress//img//autori//" . $element->getImgBig() . "');</script>";

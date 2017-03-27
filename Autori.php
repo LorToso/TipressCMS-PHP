@@ -18,4 +18,14 @@ class Autori extends BaseAutori
     {
         return $this->getNome() . " " . $this->getCognome();
     }
+    public static function fromPost(Autori &$element)
+    {
+        $element->setNome($_POST["nome"]);
+        $element->setCognome($_POST["cognome"]);
+        $element->setSito($_POST["sito"]);
+        $element->setRiconoscimenti($_POST["riconoscimenti"]);
+        $element->setBiografiaBreve($_POST["biografia_breve"]);
+        $element->setBiografia($_POST["biografia"]);
+        $element->setImgBig($_POST["img_big"]);
+    }
 }

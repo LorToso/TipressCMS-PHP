@@ -5,7 +5,15 @@
  * Date: 26.03.2017
  * Time: 19:52
  */
+require('Base/' . $class . '.php');
+require('Base/' . $class . 'Query.php');
+require($class . 'Query.php');
+require($class . '.php');
+require('Map/' . $class . 'TableMap.php');
 
+
+$queryClass = ($class . 'Query');
+$q = new $queryClass;
 $elements = $q->find()->getData();
 $element = null;
 $id = getID();
