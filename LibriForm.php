@@ -1,4 +1,6 @@
-<?php 
+<?php
+require('FormMethods.php');
+
 class LibriForm
 {
     public static function printModificationForm(Libri $element){
@@ -22,147 +24,45 @@ class LibriForm
     }
     private static function printForm(Libri $element){
         ?>
-
-<script src="./ckeditor/ckeditor.js"></script>
-<script>
-    var fullEditorCfg =
-    {
-        language: 'it',
-        height: 100,
-        toolbarGroups: [
-            { name: 'document', groups: ['mode', 'document', 'doctools'] },
-            { name: 'clipboard', groups: ['clipboard', 'undo'] },
-            { name: 'editing', groups: ['find', 'selection', 'spellchecker', 'editing'] },
-            { name: 'forms', groups: ['forms'] },
-            { name: 'basicstyles', groups: ['basicstyles', 'cleanup'] },
-            { name: 'paragraph', groups: ['list', 'indent', 'blocks', 'align', 'bidi', 'paragraph'] },
-            { name: 'links', groups: ['links'] },
-            { name: 'insert', groups: ['insert'] },
-            { name: 'styles', groups: ['styles'] },
-            { name: 'colors', groups: ['colors'] },
-            { name: 'tools', groups: ['tools'] },
-            { name: 'others', groups: ['others'] },
-            { name: 'about', groups: ['about'] }
-        ],
-        removeButtons: 'Source,Save,NewPage,Preview,Print,Templates,PasteText,Find,SelectAll,Replace,Form,Checkbox,Radio,TextField,Textarea,Select,Button,ImageButton,HiddenField,Outdent,Indent,Format,Styles,ShowBlocks,About,BidiLtr,BidiRtl,Language,CreateDiv,Image,Flash,Smiley,SpecialChar,PageBreak,Iframe,Anchor,Unlink,Link',
-    };
-</script>
 <table>
     <tr>
         <td>
             <table>
-                <tr>
-                    <?php
-                    if($element->getId() != ''){
-                    ?>
-                    <td>
-                        ID:
-                    </td>
-                    <td>
-                        <input type="text" name="id" readonly="readonly" value="<?php echo $element->getId(); ?>" />
-                    </td>
-                    <?php
-                    }
-                    ?>
-                </tr>
-                <tr>
-                    <td>
-                        Titolo:
-                    </td>
-                    <td width="100%">
-                        <input type="text" name="nome" value="<?php echo $element->getTitolo(); ?>"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Autore1:
-                    </td>
-                    <td width="100%">
-<!--                        <input type="text" id="cognome" name="cognome" value="--><?php //echo $element->getCognome(); ?><!--"/>-->
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Autore2:
-                    </td>
-                    <td width="100%">
-                        <!--                        <input type="text" id="cognome" name="cognome" value="--><?php //echo $element->getCognome(); ?><!--"/>-->
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Autore3:
-                    </td>
-                    <td width="100%">
-                        <!--                        <input type="text" id="cognome" name="cognome" value="--><?php //echo $element->getCognome(); ?><!--"/>-->
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Tipo1:
-                    </td>
-                    <td width="100%">
-                        <!--                        <input type="text" id="cognome" name="cognome" value="--><?php //echo $element->getCognome(); ?><!--"/>-->
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        IDgenere1:
-                    </td>
-                    <td width="100%">
-                        <!--                        <input type="text" id="cognome" name="cognome" value="--><?php //echo $element->getCognome(); ?><!--"/>-->
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Tipo2:
-                    </td>
-                    <td width="100%">
-                        <!--                        <input type="text" id="cognome" name="cognome" value="--><?php //echo $element->getCognome(); ?><!--"/>-->
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        IDgenere2:
-                    </td>
-                    <td width="100%">
-                        <!--                        <input type="text" id="cognome" name="cognome" value="--><?php //echo $element->getCognome(); ?><!--"/>-->
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Tipo3:
-                    </td>
-                    <td width="100%">
-                        <!--                        <input type="text" id="cognome" name="cognome" value="--><?php //echo $element->getCognome(); ?><!--"/>-->
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        IDgenere3:
-                    </td>
-                    <td width="100%">
-                        <!--                        <input type="text" id="cognome" name="cognome" value="--><?php //echo $element->getCognome(); ?><!--"/>-->
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Editore:
-                    </td>
-                    <td width="100%">
-                        <input type="text" name="editore" value="<?php echo $element->getEditore(); ?>"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Editore:
-                    </td>
-                    <td width="100%">
-                        <input type="text" name="editore" value="<?php echo $element->getEditore(); ?>"/>
-                    </td>
-                </tr>
+                <?php
+                if($element->getId() != '') {
+                    printSimpleRow("ID:","id",$element->getId());
+                    echo "<script>$('input[name=id]').prop('disabled', true); </script>";
+                }
+                printSimpleRow("Titolo","titolo",$element->getTitolo());
+                printSimpleRow("Autore1","autore1",$element->getAutore1());
+                printSimpleRow("Autore2","autore2",$element->getAutore2());
+                printSimpleRow("Autore3","autore3",$element->getAutore3());
+                printSimpleRow("Tipo 1:","tipo1",$element->getTipo1());
+                printSimpleRow("IDgenere 1:","IDgenere1",$element->getIdgenere1());
+                printSimpleRow("Tipo 2:","tipo2",$element->getTipo2());
+                printSimpleRow("IDgenere 2:","IDgenere2",$element->getIdgenere2());
+                printSimpleRow("Tipo 3:","tipo3",$element->getTipo3());
+                printSimpleRow("IDgenere 3:","IDgenere3",$element->getIdgenere3());
+                printSimpleRow("Editore:","editore",$element->getEditore());
+
+                ?>
             </table>
         </td>
+        <td>
+            <?php
+            printImageBox($element->getImgBig(), '../tipress/img/libri/');
+            ?>
+        </td>
+    </tr>
+    <tr><td><br></td></tr>
+    <?php
+    printHTMLRow("Dati tecnici:","dati_tecnici", $element->getDatiTecnici());
+    printHTMLRow("Diritti controllati:","diritti_controllati", $element->getDirittiControllati());
+    printHTMLRow("Diritti concessi:","diritti_concessi", $element->getDirittiConcessi());
+    printHTMLRow("Descrizione breve:","descrizione_breve", $element->getDescrizioneBreve());
+    printHTMLRow("Descrizione:","descrizione", $element->getDescrizione());
+    ?>
+</table>
 <?php
     }
 }
