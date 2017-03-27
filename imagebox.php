@@ -5,7 +5,8 @@
     <!--<input type="file" accept="image/*" onchange="loadFile(event)">-->
 
 <!--onchange="loadFile(event)"-->
-    <input type="file" name="img_big" id="picture"  value="<?php echo $element->getImgBig()?>"/>
+    <input type="file" id="picture"/>
+    <input type="hidden" name="img_big" id="img_name"/>
     <input type="button" id="upload" value="Upload"/>
     <img id="check_mark" style="max-width:25px;max-height:25px;visibility: hidden" src="img/check_mark.png"/>
 </DIV>
@@ -27,17 +28,23 @@
             data: form_data,
             type: 'post',
             success: function(php_script_response){
-                setImage(php_script_response);
+                var splitIndex = php_script_response.lastIndexOf("/");
+                var path = php_script_response.substring(0,splitIndex+1);
+                var filename = php_script_response.substring(splitIndex+1,php_script_response.length);
+
+                setImage(path, filename);
                 $('#check_mark').css("visibility","visible");
-                //var output = document.getElementById('outputimage');
-                //output.src = URL.createObjectURL(event.target.files[0]);
-                //alert(php_script_response); // display response from the PHP script, if any
             }
         });
     });
-    var setImage = function(imagename) {
-        var output = document.getElementById('outputimage');
-        output.src = imagename;
+    var setImage = function(path, filename) {
+        if(!filename || 0 == filename.length)
+        {
+            return;
+        }
+        var fullpath = path + filename;
+        $('#outputimage').attr("src",fullpath);
         $('#check_mark').css("visibility","hidden");
+        $('#img_name').val(filename);
     };
 </script>

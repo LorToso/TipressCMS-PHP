@@ -95,9 +95,10 @@ class AutoriForm
         <td>
             
             <?php include("imagebox.php") ?>
-            <?php 
-            if($element->getImgBig() != null && $element->getImgBig() != ""){
-                echo "<script>setImage('..//tipress//img//autori//" . $element->getImgBig() . "');</script>";
+            <?php
+            $im = $element->getImgBig();
+            if($im != null && $im != ""){
+                echo "<script>setImage('../tipress/img/autori/', '" . $im . "');</script>";
             }
             ?>
         </td>
