@@ -49,9 +49,18 @@ function printFileBox($text, $column_name, $value, $entity_type)
     echo "</td>";
     echo "</tr>";
 }
-function printCheckbox($text, $column_name, $value)
+function printCheckbox($text, $column_name, $value, $map = array(true => "true", false => "false"))
 {
-    printSimpleRow($text,$column_name,$value);
+    echo "<tr>";
+    echo "<td>";
+    echo $text;
+    echo "</td>";
+    echo '<td width="100%">';
+    echo "<input type='hidden' value='" . $map[false] . "' name='" . $column_name ."'>";
+    $v = $value==$map[true]?"checked":"";
+    echo "<input type='checkbox' value='" . $map[true] . "' name='" . $column_name ."' " . $v .">";
+    echo "</td>";
+    echo "</tr>";
 }
 function printOrderbox($text, $column_name, $value)
 {

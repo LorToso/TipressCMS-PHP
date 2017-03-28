@@ -60,9 +60,9 @@ class LibriForm
     printFileBox("Altro PDF 1:", "pdf2",$element->getPdf2(), 'Libri');
     printFileBox("Altro PDF 2:", "pdf3",$element->getPdf3(), 'Libri');
     printFileBox("Altro PDF 3:", "pdf4",$element->getPdf4(), 'Libri');
-    printCheckbox("Vetrina?", "vetrina", $element->getVetrina());
+    printCheckbox("Vetrina?", "vetrina", $element->getVetrina(),array(true => "si", false => "no"));
     printOrderbox("Ordine:", "ordine", $element->getOrdine());
-    printCheckbox("Vetrina di categoria?", "vetrinacat", $element->getVetrinacat());
+    printCheckbox("Vetrina di categoria?", "vetrinacat", $element->getVetrinacat(),array(true => "si", false => "no"));
     printOrderbox("Ordine in categoria:", "ordinecat", $element->getOrdinecat());
     ?>
 </table>
