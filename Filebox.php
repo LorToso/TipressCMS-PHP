@@ -24,12 +24,10 @@ class Filebox
     }
     protected function printControls($column_name,$content)
     {
-        echo "<DIV>";
         $this->printSelectionField($column_name,$content);
         echo '<input type="file" id="' . $this->fileFieldID . '"/>';
         echo '<input type="button" id="' . $this->uploadButtonID . '" value="Upload"/>';
         echo '<img id="' . $this->checkMarkID . '" style="max-width:25px;max-height:25px;visibility: hidden" src="img/check_mark.png"/>';
-        echo '</DIV>';
     }
     protected function printJavaScript($column_name, $entity_type, $file_type)
     {

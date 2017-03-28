@@ -25,9 +25,11 @@ class Imagebox extends Filebox
     }
     protected function printBox($column_name, $content, $entity_type)
     {
+        echo "<DIV style='text-align: center'>";
         $this->printImageBox($entity_type::getDefaultImagePath());
         $this->setImage($entity_type, $content);
         parent::printBox($column_name, $content, $entity_type,"image");
+        echo '</DIV>';
     }
     private function printImageBox($defaultImage)
     {
