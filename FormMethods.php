@@ -45,7 +45,7 @@ function printFileBox($text, $column_name, $value, $entity_type)
     echo $text;
     echo "</td>";
     echo '<td width="100%">';
-    Filebox::from($column_name,$entity_type,'document');
+    Filebox::from($column_name,$value,$entity_type,'document');
     echo "</td>";
     echo "</tr>";
 }

@@ -1,5 +1,6 @@
 <?php
 include('Header.php');
+require('authentification.php');
 include('propel.php');
 include('Searchbox.php');
 include('basic_functions.php');
