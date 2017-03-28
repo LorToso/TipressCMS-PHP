@@ -1,7 +1,7 @@
 <?php
-include('Header.php');
-require('authentification.php');
-include('propel.php');
+require_once('Header.php');
+require_once('authentification.php');
+require_once('propel.php');
 include('Searchbox.php');
 include('basic_functions.php');
 

@@ -1,54 +1,71 @@
 <?php
+require_once('DatalistManager.php');
 
 class AutocompleteBox {
 
-    public static function printBox(array $elements, $selectedElement) {
-        AutocompleteBox::printDatalist($elements);
-        AutocompleteBox::printListEdit($selectedElement);
+    private $boxId;
+    private $datalistId;
+    private $name;
+
+    public static function of(array $elements, $name = "")
+    {
+        return new AutocompleteBox($elements, $name);
     }
-    private static function printDatalist(array $elements)
-    {        
-        echo '<datalist id="elementDataList">';
-        foreach($elements as $a){
-            echo '<option id="' . $a->getId() .  '" value="' . $a->getDescriptor(). '"></option>';
+
+    private function __construct(array $elements, $name)
+    {
+        $this->boxId = uniqid("autocomplete_edit_");
+        $this->datalistId = DatalistManager::add($elements);
+        $this->name = $name;
+    }
+    public function select($selectedElement = null)
+    {
+        if($selectedElement == null)
+        {
+            $value = "";
+            $id = "";
         }
-        echo "</datalist>";
+        else
+        {
+            $value = $selectedElement->getDescriptor();
+            $id = $selectedElement->getId();
+        }
+
+
+        echo "<script>";
+        echo "$('#" . $this->boxId . "').val('" . $value . "');";
+        echo "$('#" . $this->boxId . "_chosenElement').val('" . $id . "');";
+        echo"</script>";
+
+        return $this;
     }
-    private static function printListEdit($selectedElement)
+    public function printBox()
     {
         ?>
     <script>
-        function chooser() {
-            var a = $("#autocompleteboxEdit");
-            
-            var autocompletebox = $('#autocompleteboxEdit');
-            var datalist = $('#elementDataList');
+        function chooser_<?php echo $this->boxId?>() {
+            var autocompletebox = $('#<?php echo $this->boxId?>');
+            var datalist = $('#<?php echo $this->datalistId?>');
             
             var selectedValue = autocompletebox.val();
             
             var selectedListEntry = datalist.find('option[value="' + selectedValue + '"]');
             var id = selectedListEntry.attr('id');
 
-            var field = $('#chosenElement');
+            var field = $('#<?php echo $this->boxId?>_chosenElement');
             field.val(id);
-        }
-        function clearAutocompleteBox(){
-            var autocompletebox = $('#autocompleteboxEdit');
-            autocompletebox.val('');
         }
     </script>
 
-    <input id="autocompleteboxEdit" list="elementDataList" onchange="chooser()" value="<?php echo $selectedElement!=null ? $selectedElement->getDescriptor() : ""; ?>" />
-    <input type="hidden" id="chosenElement" name="id" value="<?php echo $selectedElement!=null ? $selectedElement->getId() : ""; ?>" />
+    <input id="<?php echo $this->boxId?>" list="<?php echo $this->datalistId?>" onchange="chooser_<?php echo $this->boxId?>()" value="" />
+    <input type="hidden" id="<?php echo $this->boxId?>_chosenElement" name ="<?php echo $this->name ?>" value="" />
         <?php
+        return $this;
     }
     
-    public static function clear()
+    public function clear()
     {
-        ?>
-        <script> 
-            clearAutocompleteBox(); 
-        </script>
-        <?php
+        $this->select(null);
+        return $this;
     }
 }

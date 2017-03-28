@@ -5,7 +5,7 @@ if (session_status() == PHP_SESSION_NONE) {
 if (empty($_SESSION['authenticated']) || $_SESSION['authenticated']==false) {
     die("error: Not authenticated");
 }
-require('propel.php');
+require_once('propel.php');
 
 // Source: https://www.php-einfach.de/php-tutorial/dateiupload/
 //echo "Skript is run.";

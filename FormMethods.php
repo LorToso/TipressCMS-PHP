@@ -1,5 +1,6 @@
 <?php
-include('File_box.php');
+require_once('File_box.php');
+require_once('ForeignKeyBox.php');
 /**
  * Created by PhpStorm.
  * User: Lorenzo Toso
@@ -23,7 +24,7 @@ function printHTMLRow($text,$columnName,$content)
 function printSimpleRow($text,$columnName,$content)
 {
     echo "<tr>";
-    echo "<td>";
+    echo "<td style='white-space: nowrap'>";
     echo $text;
     echo "</td>";
     echo '<td width="100%">';
@@ -59,7 +60,14 @@ function printOrderbox($text, $column_name, $value)
 }
 function printFKBox($text, $column_name, $value, $foreignTable, $foreignValue, $orderby)
 {
-    printSimpleRow($text,$column_name,$value);
+    echo "<tr>";
+    echo "<td>";
+    echo $text;
+    echo "</td>";
+    echo '<td width="100%">';
+    ForeignKeyBox::from($column_name, $value, $foreignTable, $foreignValue, $orderby);
+    echo "</td>";
+    echo "</tr>";
 }
 function disableID()
 {

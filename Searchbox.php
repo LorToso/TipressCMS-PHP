@@ -1,5 +1,5 @@
-<?php 
-require 'AutocompleteBox.php'; 
+<?php
+require_once 'AutocompleteBox.php';
 
 class Searchbox
 {

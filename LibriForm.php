@@ -28,6 +28,7 @@ class LibriForm
     <tr>
         <td>
             <table>
+
                 <?php
                 if($element->getId() != '') {
                     printSimpleRow("ID:","id",$element->getId());

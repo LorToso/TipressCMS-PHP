@@ -5,21 +5,30 @@
  * Date: 26.03.2017
  * Time: 19:52
  */
-require('Base/' . $class . '.php');
-require('Base/' . $class . 'Query.php');
-require($class . 'Query.php');
-require($class . '.php');
-require('Map/' . $class . 'TableMap.php');
 
-
-$queryClass = ($class . 'Query');
-$q = new $queryClass;
-$elements = $q->find()->getData();
-$element = null;
-$id = getID();
-$action = getAction();
-if($id != "")
+function findAllOf($class)
 {
+    require_once('Base/' . $class . '.php');
+    require_once('Base/' . $class . 'Query.php');
+    require_once($class . 'Query.php');
+    require_once($class . '.php');
+    require_once('Map/' . $class . 'TableMap.php');
+
+    $queryClass = ($class . 'Query');
+    $q = new $queryClass;
+    $elements = $q->find()->getData();
+    return $elements;
+}
+function findById($class, $id)
+{
+    require_once('Base/' . $class . '.php');
+    require_once('Base/' . $class . 'Query.php');
+    require_once($class . 'Query.php');
+    require_once($class . '.php');
+    require_once('Map/' . $class . 'TableMap.php');
+
+    $queryClass = ($class . 'Query');
+    $q = new $queryClass;
     $possibleElement = $q->findById($id);
     if($possibleElement->count() > 0)
     {
@@ -27,9 +36,7 @@ if($id != "")
     }
     else
     {
-        echo "No element with ID " . $id . " was found.";
+        $element = null;
     }
-}
-else if($action != null){
-    echo "No matching element was found.";
+    return $element;
 }
