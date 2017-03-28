@@ -1,7 +1,7 @@
 <?php
 require_once('Filebox.php');
 require_once('ForeignKeyBox.php');
-require_once('Imagebox_new.php');
+require_once('Imagebox.php');
 /**
  * Created by PhpStorm.
  * User: Lorenzo Toso
