@@ -1,6 +1,7 @@
 <?php
-require_once('File_box.php');
+require_once('Filebox.php');
 require_once('ForeignKeyBox.php');
+require_once('Imagebox_new.php');
 /**
  * Created by PhpStorm.
  * User: Lorenzo Toso
@@ -32,12 +33,13 @@ function printSimpleRow($text,$columnName,$content)
     echo "</td>";
     echo "</tr>";
 }
-function printImageBox($image, $path)
+function printImageBox($column_name, $value, $entity_type)
 {
-    include("imagebox.php");
-    if($image != null && $image != ""){
-        echo "<script>setImage('" . $path . "', '" . $image . "');</script>";
-    }
+    Imagebox::from($column_name, $value, $entity_type,'Image');
+    //include("_imagebox.php");
+    //if($image != null && $image != ""){
+    //    echo "<script>setImage('" . $path . "', '" . $image . "');</script>";
+    //}
 }
 function printFileBox($text, $column_name, $value, $entity_type)
 {
@@ -72,6 +74,22 @@ function printFKBox($text, $column_name, $value, $foreignTable, $foreignValue, $
 function disableID()
 {
     echo "<script>$('input[name=id]').prop('readonly', true); </script>";
+}
+function printFormButtons($element)
+{
+
+    echo '<div id="formbuttonbox">';
+
+    if($element->isNew())
+    {
+        echo '<button type="submit" name="action" value="insert" id="createbutton">Crea!</button>';
+    }
+    else
+    {
+        echo '<button type="submit" name="action" value="update" id="changebutton">Modifica!</button>';
+        echo '<button type="submit" name="action" value="delete" id="deletebutton">Elimina!</button>';
+    }
+    echo '</div>';
 }
 ?>
 <script src="./ckeditor/ckeditor.js"></script>

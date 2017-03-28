@@ -7,20 +7,7 @@ class LibriForm
         echo '<form method="post">';
 
         LibriForm ::printForm($element);
-
-        echo '<div id="formbuttonbox">';
-
-        if($element->isNew())
-        {
-            echo '<button type="submit" name="action" value="insert" id="createbutton">Crea!</button>';
-        }
-        else
-        {
-            echo '<button type="submit" name="action" value="update" id="changebutton">Modifica!</button>';
-            echo '<button type="submit" name="action" value="delete" id="deletebutton">Elimina!</button>';
-        }
-        echo '</div>';
-        echo '</form>';
+        printFormButtons($element);
     }
     private static function printForm(Libri $element){
         ?>
@@ -51,7 +38,7 @@ class LibriForm
         </td>
         <td>
             <?php
-            printImageBox($element->getImgBig(), '../tipress/img/libri/');
+            printImageBox('img_big',$element->getImgBig(), 'Libri'); //'../tipress/img/libri/'
             ?>
         </td>
     </tr>

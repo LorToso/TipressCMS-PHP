@@ -6,7 +6,7 @@ class AutoriForm
     public static function printModificationForm(Autori $element){
         echo '<form method="post">';
         AutoriForm::printForm($element);
-        AutoriForm::printButtons($element);
+        printFormButtons($element);
         echo '</form>';
     }
 
@@ -30,7 +30,7 @@ class AutoriForm
         </td>
         <td>
             <?php
-            printImageBox($element->getImgBig(), '../tipress/img/autori/');
+            printImageBox('img_big',$element->getImgBig(), 'Autori');//'../tipress/img/autori/');
             ?>
         </td>
     </tr>
@@ -42,22 +42,6 @@ class AutoriForm
     ?>
 </table>
 <?php
-    }
-    private static function printButtons($element)
-    {
-
-        echo '<div id="formbuttonbox">';
-
-        if($element->isNew())
-        {
-            echo '<button type="submit" name="action" value="insert" id="createbutton">Crea!</button>';
-        }
-        else
-        {
-            echo '<button type="submit" name="action" value="update" id="changebutton">Modifica!</button>';
-            echo '<button type="submit" name="action" value="delete" id="deletebutton">Elimina!</button>';
-        }
-        echo '</div>';
     }
 }
 function getCurrentURL()

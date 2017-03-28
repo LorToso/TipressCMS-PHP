@@ -16,6 +16,7 @@ class Libri extends BaseLibri
 {
     public static function getPathFor($filetype)
     {
+        $filetype = strtolower($filetype);
         if($filetype == 'image')
         {
             return '../tipress/img/libri/';
@@ -28,6 +29,11 @@ class Libri extends BaseLibri
         {
             die("error: invalid filetype");
         }
+    }
+
+    public static function getDefaultImagePath()
+    {
+        return 'img/default_book.jpg';
     }
     public function getDescriptor()
     {

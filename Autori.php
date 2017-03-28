@@ -16,6 +16,7 @@ class Autori extends BaseAutori
 {
     public static function getPathFor($filetype)
     {
+        $filetype = strtolower($filetype);
         if($filetype == 'image')
         {
             return '../tipress/img/autori/';
@@ -28,6 +29,10 @@ class Autori extends BaseAutori
         {
             die("error: invalid filetype");
         }
+    }
+    public static function getDefaultImagePath()
+    {
+        return 'img/default_author.jpg';
     }
     public function getDescriptor()
     {
