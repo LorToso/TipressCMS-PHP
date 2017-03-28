@@ -11,7 +11,7 @@ require_once('AutocompleteBox.php');
 
 class ForeignKeyBox
 {
-    public static function from($column_name, $value, $class, $foreignTable, $orderby)
+    public static function from($column_name, $value, $class)
     {
         $elements = findAllOf($class);
         $element = findById($class, $value);

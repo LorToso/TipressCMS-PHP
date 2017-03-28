@@ -14,5 +14,8 @@ use Base\Genere1 as BaseGenere1;
  */
 class Genere1 extends BaseGenere1
 {
-
+    public function getDescriptor()
+    {
+        return $this->getNome();
+    }
 }

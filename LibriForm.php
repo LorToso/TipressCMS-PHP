@@ -8,6 +8,8 @@ class LibriForm
 
         LibriForm ::printForm($element);
         printFormButtons($element);
+
+        echo '</form>';
     }
     private static function printForm(Libri $element){
         ?>
@@ -24,13 +26,14 @@ class LibriForm
                 printSimpleRow("Titolo","titolo",$element->getTitolo());
                 printFKBox("Autore1","autore1",$element->getAutore1(),"autori","nome + ' ' + cognome","cognome");
                 printFKBox("Autore2","autore2",$element->getAutore2(),"autori","nome + ' ' + cognome","cognome");
-                printFKBox("Autore3","autore3",$element->getAutore3(),"autori","nome + ' ' + cognome","cognome");
-                printSimpleRow("Tipo 1:","tipo1",$element->getTipo1());
-                printSimpleRow("IDgenere 1:","IDgenere1",$element->getIdgenere1());
-                printSimpleRow("Tipo 2:","tipo2",$element->getTipo2());
-                printSimpleRow("IDgenere 2:","IDgenere2",$element->getIdgenere2());
-                printSimpleRow("Tipo 3:","tipo3",$element->getTipo3());
-                printSimpleRow("IDgenere 3:","IDgenere3",$element->getIdgenere3());
+                //printFKBox("Autore3","autore3",$element->getAutore3(),"autori","nome + ' ' + cognome","cognome");
+                //printSimpleRow("Tipo 1:","tipo1",$element->getTipo1());
+                printFKBox("Genere:","tipo1",$element->getTipo1(),"genere1");
+                printFKBox("Tipo:","IDgenere1",$element->getIdgenere1(),"genere2");
+                //printSimpleRow("Tipo 2:","tipo2",$element->getTipo2());
+                //printSimpleRow("IDgenere 2:","IDgenere2",$element->getIdgenere2());
+                //printSimpleRow("Tipo 3:","tipo3",$element->getTipo3());
+                //printSimpleRow("IDgenere 3:","IDgenere3",$element->getIdgenere3());
                 printSimpleRow("Editore:","editore",$element->getEditore());
 
                 ?>

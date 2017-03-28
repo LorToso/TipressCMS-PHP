@@ -14,5 +14,8 @@ use Base\Genere2 as BaseGenere2;
  */
 class Genere2 extends BaseGenere2
 {
-
+    public function getDescriptor()
+    {
+        return $this->getNomeUniq();
+    }
 }

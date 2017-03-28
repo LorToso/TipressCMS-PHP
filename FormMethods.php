@@ -8,7 +8,8 @@ require_once('Imagebox.php');
  * Date: 27.03.2017
  * Time: 16:21
  */
-function printHTMLRow($text,$columnName,$content)
+
+function printHTMLRow($text, $columnName, $content)
 {
     echo "<tr>";
     echo "<td>";
@@ -36,10 +37,6 @@ function printSimpleRow($text,$columnName,$content)
 function printImageBox($column_name, $value, $entity_type)
 {
     Imagebox::from($column_name, $value, $entity_type,'Image');
-    //include("_imagebox.php");
-    //if($image != null && $image != ""){
-    //    echo "<script>setImage('" . $path . "', '" . $image . "');</script>";
-    //}
 }
 function printFileBox($text, $column_name, $value, $entity_type)
 {
@@ -60,14 +57,14 @@ function printOrderbox($text, $column_name, $value)
 {
     printSimpleRow($text,$column_name,$value);
 }
-function printFKBox($text, $column_name, $value, $foreignTable, $foreignValue, $orderby)
+function printFKBox($text, $column_name, $value, $foreignTable)
 {
     echo "<tr>";
     echo "<td>";
     echo $text;
     echo "</td>";
     echo '<td width="100%">';
-    ForeignKeyBox::from($column_name, $value, $foreignTable, $foreignValue, $orderby);
+    ForeignKeyBox::from($column_name, $value, $foreignTable);
     echo "</td>";
     echo "</tr>";
 }
