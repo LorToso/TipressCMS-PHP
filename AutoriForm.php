@@ -44,10 +44,3 @@ class AutoriForm
 <?php
     }
 }
-function getCurrentURL()
-{
-    return filter_input(INPUT_SERVER, 'REQUEST_URI');
-}
-function getUrlWithoutGetParams(){
-    return substr(getCurrentURL(),0,strpos(getCurrentURL(),'?'));
-}

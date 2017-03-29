@@ -64,7 +64,14 @@ function printCheckbox($text, $column_name, $value, $map = array(true => "true",
 }
 function printOrderbox($text, $column_name, $value)
 {
-    printSimpleRow($text,$column_name,$value);
+    echo "<tr>";
+    echo "<td>";
+    echo $text;
+    echo "</td>";
+    echo '<td width="100%">';
+
+    echo "</td>";
+    echo "</tr>";
 }
 function printFKBox($text, $column_name, $value, $foreignTable)
 {
@@ -96,6 +103,13 @@ function printFormButtons($element)
         echo '<button type="submit" name="action" value="delete" id="deletebutton">Elimina!</button>';
     }
     echo '</div>';
+}
+function getCurrentURL()
+{
+    return filter_input(INPUT_SERVER, 'REQUEST_URI');
+}
+function getUrlWithoutGetParams(){
+    return substr(getCurrentURL(),0,strpos(getCurrentURL(),'?'));
 }
 ?>
 <script src="./ckeditor/ckeditor.js"></script>

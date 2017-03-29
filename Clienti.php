@@ -15,4 +15,36 @@ use Base\Clienti as BaseClienti;
 class Clienti extends BaseClienti
 {
 
+    public static function getPathFor($filetype)
+    {
+        $filetype = strtolower($filetype);
+        if($filetype == 'image')
+        {
+            return '../tipress/img/clienti/';
+        }
+        else if($filetype == 'document')
+        {
+            return '../tipress/pdf/';
+        }
+        else
+        {
+            die("error: invalid filetype");
+        }
+    }
+    public static function getDefaultImagePath()
+    {
+        return 'img/default_author.jpg';
+    }
+    public function getDescriptor()
+    {
+        return $this->getNome() . " " . $this->getCognome();
+    }
+    public static function fromPost(Clienti &$element)
+    {
+        $element->setNome($_POST["nome"]);
+        $element->setCognome($_POST["cognome"]);
+        $element->setSito($_POST["sito"]);
+        $element->setDescrizione($_POST["descrizione"]);
+        $element->setImgBig($_POST["img_big"]);
+    }
 }

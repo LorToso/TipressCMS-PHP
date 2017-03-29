@@ -61,18 +61,11 @@ class LibriForm
     printFileBox("Altro PDF 2:", "pdf3",$element->getPdf3(), 'Libri');
     printFileBox("Altro PDF 3:", "pdf4",$element->getPdf4(), 'Libri');
     printCheckbox("Vetrina?", "vetrina", $element->getVetrina(),array(true => "si", false => "no"));
-    printOrderbox("Ordine:", "ordine", $element->getOrdine());
+    //printOrderbox("Ordine:", "ordine", $element->getOrdine());
     printCheckbox("Vetrina di categoria?", "vetrinacat", $element->getVetrinacat(),array(true => "si", false => "no"));
-    printOrderbox("Ordine in categoria:", "ordinecat", $element->getOrdinecat());
+    //printOrderbox("Ordine in categoria:", "ordinecat", $element->getOrdinecat());
     ?>
 </table>
 <?php
     }
-}
-function getCurrentURL()
-{
-    return filter_input(INPUT_SERVER, 'REQUEST_URI');
-}
-function getUrlWithoutGetParams(){
-    return substr(getCurrentURL(),0,strpos(getCurrentURL(),'?'));
 }
