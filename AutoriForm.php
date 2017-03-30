@@ -30,7 +30,7 @@ class AutoriForm
         </td>
         <td>
             <?php
-            printImageBox('img_big',$element->getImgBig(), 'Autori');//'../tipress/img/autori/');
+            printImageBox('img_big',$element->getImgBig(), 'Autori');
             ?>
         </td>
     </tr>

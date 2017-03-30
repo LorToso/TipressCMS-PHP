@@ -1,4 +1,5 @@
 <?php
+require_once 'paths.php';
 
 use Base\Libri as BaseLibri;
 
@@ -16,14 +17,17 @@ class Libri extends BaseLibri
 {
     public static function getPathFor($filetype)
     {
+        global $book_image_path;
+        global $book_document_path;
+
         $filetype = strtolower($filetype);
         if($filetype == 'image')
         {
-            return '../tipress/img/libri/';
+            return $book_image_path;
         }
         else if($filetype == 'document')
         {
-            return '../tipress/pdf/';
+            return $book_document_path;
         }
         else
         {

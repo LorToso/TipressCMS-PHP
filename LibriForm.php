@@ -24,9 +24,9 @@ class LibriForm
                     disableID();
                 }
                 printSimpleRow("Titolo","titolo",$element->getTitolo());
-                printFKBox("Autore1","autore1",$element->getAutore1(),"autori","nome + ' ' + cognome","cognome");
-                printFKBox("Autore2","autore2",$element->getAutore2(),"autori","nome + ' ' + cognome","cognome");
-                //printFKBox("Autore3","autore3",$element->getAutore3(),"autori","nome + ' ' + cognome","cognome");
+                printFKBox("Autore1","autore1",$element->getAutore1(),"autori");
+                printFKBox("Autore2","autore2",$element->getAutore2(),"autori");
+                //printFKBox("Autore3","autore3",$element->getAutore3(),"autori");
                 //printSimpleRow("Tipo 1:","tipo1",$element->getTipo1());
                 printFKBox("Genere:","tipo1",$element->getTipo1(),"genere1");
                 printFKBox("Tipo:","IDgenere1",$element->getIdgenere1(),"genere2");
@@ -41,7 +41,7 @@ class LibriForm
         </td>
         <td>
             <?php
-            printImageBox('img_big',$element->getImgBig(), 'Libri'); //'../tipress/img/libri/'
+            printImageBox('img_big',$element->getImgBig(), 'Libri');
             ?>
         </td>
     </tr>

@@ -1,4 +1,5 @@
 <?php
+require_once 'paths.php';
 
 use Base\Clienti as BaseClienti;
 
@@ -17,14 +18,17 @@ class Clienti extends BaseClienti
 
     public static function getPathFor($filetype)
     {
+        global $client_image_path;
+        global $client_document_path;
+
         $filetype = strtolower($filetype);
         if($filetype == 'image')
         {
-            return '../tipress/img/clienti/';
+            return $client_image_path;
         }
         else if($filetype == 'document')
         {
-            return '../tipress/pdf/';
+            return $client_document_path;
         }
         else
         {

@@ -1,4 +1,5 @@
 <?php
+require_once 'paths.php';
 
 use Base\Autori as BaseAutori;
 
@@ -16,14 +17,17 @@ class Autori extends BaseAutori
 {
     public static function getPathFor($filetype)
     {
+        global $author_image_path;
+        global $author_document_path;
+
         $filetype = strtolower($filetype);
         if($filetype == 'image')
         {
-            return '../tipress/img/autori/';
+            return $author_image_path;
         }
         else if($filetype == 'document')
         {
-            return '../tipress/pdf/';
+            return $author_document_path;
         }
         else
         {
