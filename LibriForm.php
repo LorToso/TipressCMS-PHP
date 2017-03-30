@@ -24,12 +24,12 @@ class LibriForm
                     disableID();
                 }
                 printSimpleRow("Titolo","titolo",$element->getTitolo());
-                printFKBox("Autore1","autore1",$element->getAutore1(),"autori");
-                printFKBox("Autore2","autore2",$element->getAutore2(),"autori");
-                //printFKBox("Autore3","autore3",$element->getAutore3(),"autori");
+                printFKBox("Autore1","autore1",$element->getAutore1(),"Autori");
+                printFKBox("Autore2","autore2",$element->getAutore2(),"Autori");
+                //printFKBox("Autore3","autore3",$element->getAutore3(),"Autori");
                 //printSimpleRow("Tipo 1:","tipo1",$element->getTipo1());
-                printFKBox("Genere:","tipo1",$element->getTipo1(),"genere1");
-                printFKBox("Tipo:","IDgenere1",$element->getIdgenere1(),"genere2");
+                printFKBox("Genere:","tipo1",$element->getTipo1(),"Genere1");
+                printFKBox("Tipo:","IDgenere1",$element->getIdgenere1(),"Genere2");
                 //printSimpleRow("Tipo 2:","tipo2",$element->getTipo2());
                 //printSimpleRow("IDgenere 2:","IDgenere2",$element->getIdgenere2());
                 //printSimpleRow("Tipo 3:","tipo3",$element->getTipo3());
