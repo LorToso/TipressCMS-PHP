@@ -14,5 +14,23 @@ use Base\News as BaseNews;
  */
 class News extends BaseNews
 {
+    public static function getPathFor($filetype)
+    {
+        die("error: Invalid operation.");
+    }
 
+    public static function getDefaultImagePath()
+    {
+        return 'img/default_book.jpg';
+    }
+    public function getDescriptor()
+    {
+        return $this->getTitolo();
+    }
+    public static function fromPost(News &$element)
+    {
+        $element->setTitolo($_POST["titolo"]);
+        $element->setTestoBreve($_POST["testo_breve"]);
+        $element->setTesto($_POST["testo"]);
+    }
 }
