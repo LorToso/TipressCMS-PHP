@@ -10,7 +10,7 @@ class Searchbox
 <form method="get" action="<?php echo filter_input(INPUT_SERVER, 'REQUEST_URI'); ?>" >
     <div id="autocompletebox">
         Cerca:
-        <?php AutocompleteBox::printBox($elements, $selectedElement);?>
+        <?php AutocompleteBox::of($elements,'id')->printBox()->select($selectedElement);?>
         
         <button type="submit" name="action" value="find">Cerca!</button>
         oppure: <button type="submit" name="action" value="create">Nuovo!</button>

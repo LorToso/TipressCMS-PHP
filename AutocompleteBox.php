@@ -57,7 +57,7 @@ class AutocompleteBox {
         }
     </script>
 
-    <input id="<?php echo $this->boxId?>" list="<?php echo $this->datalistId?>" onchange="chooser_<?php echo $this->boxId?>()" value="" />
+    <input type="text" id="<?php echo $this->boxId?>" list="<?php echo $this->datalistId?>" onchange="chooser_<?php echo $this->boxId?>()" value="" />
     <input type="hidden" id="<?php echo $this->boxId?>_chosenElement" name ="<?php echo $this->name ?>" value="" />
         <?php
         return $this;
