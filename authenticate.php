@@ -2,6 +2,7 @@
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
+require_once 'User.php';
     //if($_SERVER["HTTPS"] != "on")
     //{
         //header("Location: https://" . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"]);
@@ -14,18 +15,17 @@ if (session_status() == PHP_SESSION_NONE) {
  */
 function IsLoginCorrect()
 {
-    return $_POST['user'] === "secret" && $_POST['password'] === "secret";
+    return $_POST['user'] == $username && $_POST['password'] == $password;
 }
 function IsLoginDefined()
 {
-    return !empty($_POST['user']) && !empty($_POST['password']);
+    return isset($_POST['user']) && isset($_POST['password']);
 }
 
 if (IsLoginDefined() && IsLoginCorrect())
 {
     $_SESSION['authenticated'] = true;
     echo "<script> window.location.replace(\"" . $_SESSION['redirect'] . "\"); </script>";
-    exit();
 }
 else {
     include 'Header.php';
@@ -57,7 +57,17 @@ else {
         </tr>
         <tr>
             <td>
+                <img src="img/check_mark_wrong.png" id="check_mark_login" style="max-height: 25px;max-width: 25px" hidden/>
+                <?php
+                if(IsLoginDefined() && !IsLoginCorrect())
+                    echo "<script>$('#check_mark_login').prop('hidden',false);</script>";
+                ?>
+            </td>
+        </tr>
+        <tr>
+            <td>
                 <button type="submit">Login</button>
+
             </td>
         </tr>
     </table>
