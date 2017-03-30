@@ -4,3 +4,4 @@ User.php
 /vendor/
 /propel.json
 
+/generated-conf/
