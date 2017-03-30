@@ -8,6 +8,14 @@
       <webServer id="3eb7a616-afb5-4a5c-8bfe-978f3660cf0b" name="Dev2" url="http://localhost/tipress/riservato">
         <fileTransfer port="0" mountedRoot="C:\xampp\htdocs\tipress\riservato" accessType="MOUNT" />
       </webServer>
+      <webServer id="db4aff94-a543-4a80-a5a4-298d3bf750ea" name="Production" url="http://tipress.homepage.t-online.de">
+        <fileTransfer host="tipress.homepage.t-online.de" port="21" rootFolder="/riservato">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="21" />
+        </fileTransfer>
+      </webServer>
     </option>
   </component>
 </project>
