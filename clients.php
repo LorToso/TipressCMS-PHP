@@ -7,7 +7,7 @@ include('basic_functions.php');
 
 $class = 'Clienti';
 
-print_r($_POST);
-//echo "<script>$('#nav_autori').css('color','white','background-color','black');</script>";
+//print_r($_POST);
+echo "<script>$('#nav_clienti').css({'color':'white','background-color':'black'});</script>";
 include('cms.php');
 include('Footer.html');

@@ -7,7 +7,7 @@ include('basic_functions.php');
 
 $class = 'Libri';
 
-print_r($_POST);
-//echo "<script>$('#nav_autori').css('color','white','background-color','black');</script>";
+//print_r($_POST);
+echo "<script>$('#nav_libri').css({'color':'white','background-color':'black'});</script>";
 include('cms.php');
 include('Footer.html');
