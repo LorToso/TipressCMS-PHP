@@ -2,8 +2,11 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="25944050-ce10-495c-b32e-4f6fe0429970" name="Xampp Apache" url="http://localhost/PHPTipressTest">
+      <webServer id="25944050-ce10-495c-b32e-4f6fe0429970" name="Dev1" url="http://localhost/PHPTipressTest">
         <fileTransfer port="0" mountedRoot="C:\xampp\htdocs\PhpTipressTest" accessType="MOUNT" />
+      </webServer>
+      <webServer id="3eb7a616-afb5-4a5c-8bfe-978f3660cf0b" name="Dev2" url="http://localhost/tipress/riservato">
+        <fileTransfer port="0" mountedRoot="C:\xampp\htdocs\tipress\riservato" accessType="MOUNT" />
       </webServer>
     </option>
   </component>

@@ -1,6 +1,4 @@
 <?php
-require_once 'paths.php';
-
 use Base\Clienti as BaseClienti;
 
 /**
@@ -18,8 +16,7 @@ class Clienti extends BaseClienti
 
     public static function getPathFor($filetype)
     {
-        global $client_image_path;
-        global $client_document_path;
+        require 'paths.php';
 
         $filetype = strtolower($filetype);
         if($filetype == 'image')

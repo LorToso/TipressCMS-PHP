@@ -5,7 +5,7 @@
  * Date: 30.03.2017
  * Time: 14:47
  */
-$dev = true;
+$dev = false;
 if($dev)
 {
     $author_image_path      = '../tipress/img/autori/';

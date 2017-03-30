@@ -1,5 +1,4 @@
 <?php
-require_once 'paths.php';
 
 use Base\Autori as BaseAutori;
 
@@ -17,8 +16,7 @@ class Autori extends BaseAutori
 {
     public static function getPathFor($filetype)
     {
-        global $author_image_path;
-        global $author_document_path;
+        require 'paths.php';
 
         $filetype = strtolower($filetype);
         if($filetype == 'image')

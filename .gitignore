@@ -1,3 +1,6 @@
 Connection.php
 .idea/workspace.xml
 User.php
+/vendor/
+/propel.json
+

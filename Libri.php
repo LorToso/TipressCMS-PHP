@@ -1,5 +1,4 @@
 <?php
-require_once 'paths.php';
 
 use Base\Libri as BaseLibri;
 
@@ -17,8 +16,7 @@ class Libri extends BaseLibri
 {
     public static function getPathFor($filetype)
     {
-        global $book_image_path;
-        global $book_document_path;
+        require 'paths.php';
 
         $filetype = strtolower($filetype);
         if($filetype == 'image')
