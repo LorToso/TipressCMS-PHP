@@ -35,7 +35,7 @@ class Libri extends BaseLibri
 
     public static function getDefaultImagePath()
     {
-        return 'img/default_book.jpg';
+        return 'img/default_book.gif';
     }
     public function getDescriptor()
     {
@@ -47,13 +47,13 @@ class Libri extends BaseLibri
         $element->setTitolo($_POST["titolo"]);
         $element->setAutore1($_POST["autore1"]);
         $element->setAutore2($_POST["autore2"]);
-        $element->setAutore3($_POST["autore3"]);
+        //$element->setAutore3($_POST["autore3"]);
         $element->setTipo1($_POST["tipo1"]);
         $element->setIdgenere1($_POST["IDgenere1"]);
-        $element->setTipo2($_POST["tipo2"]);
-        $element->setIdgenere2($_POST["IDgenere2"]);
-        $element->setTipo3($_POST["tipo3"]);
-        $element->setIdgenere3($_POST["IDgenere3"]);
+        //$element->setTipo2($_POST["tipo2"]);
+        //$element->setIdgenere2($_POST["IDgenere2"]);
+        //$element->setTipo3($_POST["tipo3"]);
+        //$element->setIdgenere3($_POST["IDgenere3"]);
         $element->setEditore($_POST["editore"]);
         $element->setDatiTecnici($_POST["dati_tecnici"]);
         $element->setDirittiControllati($_POST["diritti_controllati"]);
@@ -70,8 +70,8 @@ class Libri extends BaseLibri
         $element->setPdf4($_POST["pdf4"]);
         $element->setImgBig($_POST["img_big"]);
         $element->setVetrina($_POST["vetrina"]);
-        $element->setOrdine($_POST["ordine"]);
+        //$element->setOrdine($_POST["ordine"]);
         $element->setVetrinacat($_POST["vetrinacat"]);
-        $element->setOrdinecat($_POST["ordinecat"]);
+        //$element->setOrdinecat($_POST["ordinecat"]);
     }
 }
