@@ -58,8 +58,8 @@ class LibriForm
     printFileBox("Scheda francese:", "pdf1_fra",$element->getPdf1Fra(), 'Libri');
     printFileBox("Scheda spagnolo:", "pdf1_esp",$element->getPdf1Esp(), 'Libri');
     printFileBox("Comunicato Stampa:", "pdf2",$element->getPdf2(), 'Libri');
-    printFileBox("Estratto del libro:", "pdf3",$element->getPdf3(), 'Libri');
-    printFileBox("Libro intero:", "pdf4",$element->getPdf4(), 'Libri');
+    printFileBox("Estratto del libro:", "pdf4",$element->getPdf4(), 'Libri');
+    printFileBox("Libro intero:", "pdf3",$element->getPdf3(), 'Libri');
     printCheckbox("Vetrina?", "vetrina", $element->getVetrina(),array(true => "si", false => "no"));
     //printOrderbox("Ordine:", "ordine", $element->getOrdine());
     printCheckbox("Vetrina di categoria?", "vetrinacat", $element->getVetrinacat(),array(true => "si", false => "no"));
