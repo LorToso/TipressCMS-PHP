@@ -100,7 +100,7 @@ function printFormButtons($element)
     else
     {
         echo '<button type="submit" name="action" value="update" id="changebutton">Modifica!</button>';
-        echo '<button type="submit" name="action" value="delete" id="deletebutton">Elimina!</button>';
+        echo '<button type="submit" name="action" value="delete" id="deletebutton" onclick="return confirm(\'Sei sicuro?\')">Elimina!</button>';
     }
     echo '</div>';
 }
