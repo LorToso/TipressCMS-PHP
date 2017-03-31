@@ -2,6 +2,7 @@
 class Filebox
 {
     protected $uploadButtonId;
+    protected $deleteButtonId;
     protected $fileFieldId;
     protected $checkMarkId;
 
@@ -12,6 +13,7 @@ class Filebox
     protected function __construct($column_name, $content, $entity_type, $file_type)
     {
         $this->uploadButtonID = $column_name . "_upload";
+        $this->deleteButtonID = $column_name . "_delete";
         $this->fileFieldID = $column_name . "_file";
         $this->checkMarkID = $column_name . "_checkMark";
 
@@ -27,6 +29,7 @@ class Filebox
         $this->printSelectionField($column_name,$content);
         echo '<input type="file" id="' . $this->fileFieldID . '"/>';
         echo '<input type="button" id="' . $this->uploadButtonID . '" value="Upload"/>';
+        echo '<input type="button" id="' . $this->deleteButtonID . '" value="Elimina" onclick="$(\'#' . $column_name . '\').val(\'\'); $(\'#' . $this->checkMarkID . '\').css(\'visibility\', \'visible\');"/>';
         echo '<img id="' . $this->checkMarkID . '" style="max-width:25px;max-height:25px;visibility: hidden" src="img/check_mark.png"/>';
     }
     protected function printJavaScript($column_name, $entity_type, $file_type)
