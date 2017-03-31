@@ -26,7 +26,7 @@ if (IsLoginDefined() && IsLoginCorrect($username, $password))
 {
     $_SESSION['authenticated'] = true;
     if(!isset($_SESSION['redirect']))
-        $_SESSION['redirect'] = '../';
+        $_SESSION['redirect'] = './';
     echo "<script> window.location.replace(\"" . $_SESSION['redirect'] . "\"); </script>";
 }
 else {
